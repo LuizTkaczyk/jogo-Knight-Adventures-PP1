@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Animator anim;
 
     //public GameObject spawnPoint;
+    //teste gitttttttttttttttt
 
     
     public GameObject pauseMenu;
