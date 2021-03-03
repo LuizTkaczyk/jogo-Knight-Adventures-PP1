@@ -9,20 +9,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D rig;
     private Animator anim;
 
-    //public GameObject spawnPoint;
-    //teste gitttttttttttttttt
-
     
     public GameObject pauseMenu;
     public bool isPaused;
 
-    
-
-
-
     public float Speed;
 
     public bool isJumping;
+    public bool DoubleJump;
     public float JumpForce;
 
 
@@ -45,6 +39,9 @@ public class Player : MonoBehaviour
     public bool isLeft;
     public bool isAtk;
 
+    //controle xbox
+    float andar = 20;
+
     //posição inicial do player
     public Vector2 posInicial;
 
@@ -61,7 +58,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+      
 
         //determina a posição no inicio do jogo
         posInicial = new Vector2(-12.00f, -1.37f);
@@ -85,13 +82,18 @@ public class Player : MonoBehaviour
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
         if (isAlive)
         {
-            if (Input.GetKey(KeyCode.D)) //vira/vai pra direita , com o teclado
+
+
+
+            // if (Input.GetKey(KeyCode.D))
+            if (Input.GetAxisRaw("HorizontalJoystick") > 0) //vira/vai pra direita , com o teclado
 
             {
                 rig.velocity = new Vector2(Speed * Time.deltaTime, rig.velocity.y); //faz o personagem andar para a direita, o time.delta time deixa o movimento mais suave
                 anim.SetBool("isWalking", true); // ativa a animação de andar
                 transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
             }
+
             else
             {
                 rig.velocity = new Vector2(0f, rig.velocity.y); //codigo para o player não deslizar apos parar de correr
@@ -100,8 +102,8 @@ public class Player : MonoBehaviour
             }
 
 
-
-            if (Input.GetKey(KeyCode.A))  //vira/vai pra esquerda
+            // if (Input.GetKey(KeyCode.A))
+            if (Input.GetAxisRaw("HorizontalJoystick") < 0)  //vira/vai pra esquerda
 
             {
                 rig.velocity = new Vector2(-Speed * Time.deltaTime, rig.velocity.y); //deixa o speed negativo para ele se movimetar para a esquerda
@@ -109,16 +111,37 @@ public class Player : MonoBehaviour
                 transform.localEulerAngles = new Vector3(0, 180, 0); // deixa o player virado para a esquerda ao pressionar para a esquerda
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+            // if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump"))
 
             {
-                rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // codigo para o pulo
-                isJumping = true;
-                anim.SetBool("isJump", true);
-                Audios.current.PlayMusic(Audios.current.jumpSfx);
+
+                if (!isJumping)
+                {
+                    rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // codigo para o pulo
+                    isJumping = true;
+                    anim.SetBool("isJump", true);
+                    DoubleJump = true;
+                    Audios.current.PlayMusic(Audios.current.jumpSfx);
+
+                }
+                else
+                {
+                    if (DoubleJump)//pulo duplo
+                    {
+                        rig.AddForce(Vector2.up * (JumpForce * 0.9f ), ForceMode2D.Impulse); // codigo para o pulo
+                        isJumping = true;
+                        anim.SetBool("isJump", true);
+                        DoubleJump = false;
+                        Audios.current.PlayMusic(Audios.current.jumpSfx);
+                    }
+                }
+
+                
             }
 
-            if (Input.GetKeyDown(KeyCode.K)) //codigo de ataque
+            //if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetButtonDown("Atack")) //codigo de ataque
 
             {
                 Audios.current.PlayMusic(Audios.current.atkSfx);
@@ -301,6 +324,7 @@ public class Player : MonoBehaviour
             anim.SetBool("isJump", false);
         }
 
+
         if (collision.gameObject.tag == "checkpoint")
         {
             posInicial = collision.gameObject.transform.position; //pega a posição do player ao passar no checkpoint
@@ -326,6 +350,15 @@ public class Player : MonoBehaviour
 
        
     }
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == 8)
+    //    {
+    //        isJumping = false;
+    //        anim.SetBool("isJump", false);
+    //    }
+    //}
 
 
     public IEnumerator PlayerDemage(float DemageTime)
