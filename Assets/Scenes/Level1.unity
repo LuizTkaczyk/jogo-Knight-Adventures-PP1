@@ -1900,7 +1900,7 @@ GameObject:
   - component: {fileID: 202103115}
   m_Layer: 0
   m_Name: Golom
-  m_TagString: Untagged
+  m_TagString: Golom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3367,7 +3367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 434240996}
   m_Layer: 0
-  m_Name: Platforms2
+  m_Name: Plataformas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3833,7 +3833,7 @@ PrefabInstance:
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
       propertyPath: AtkInterval
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
@@ -4805,7 +4805,7 @@ PrefabInstance:
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
       propertyPath: AtkInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b6e29154d571b44971c5b39b624fca, type: 3}
@@ -6040,7 +6040,7 @@ PrefabInstance:
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
       propertyPath: AtkInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
@@ -7203,7 +7203,7 @@ PrefabInstance:
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
       propertyPath: AtkInterval
-      value: 3
+      value: 1.51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b6e29154d571b44971c5b39b624fca, type: 3}
@@ -8335,7 +8335,7 @@ PrefabInstance:
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
       propertyPath: AtkInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7816976306277966143, guid: a4b6e29154d571b44971c5b39b624fca,
         type: 3}
@@ -13159,7 +13159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537539120}
   m_Layer: 0
-  m_Name: CheckPointFlag
+  m_Name: CheckPointBandeira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18267,10 +18267,16 @@ PrefabInstance:
       propertyPath: isRight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7012093428138385677, guid: 3b6a5dd94efaf934da32b3c9838e041a,
+        type: 3}
+      propertyPath: Machado
+      value: 
+      objectReference: {fileID: 4731461345660819477, guid: e02773060c6217e4f94d5546fc50a743,
+        type: 3}
     - target: {fileID: 7012093428138385678, guid: 3b6a5dd94efaf934da32b3c9838e041a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.89
+      value: -12.98
       objectReference: {fileID: 0}
     - target: {fileID: 7012093428138385678, guid: 3b6a5dd94efaf934da32b3c9838e041a,
         type: 3}

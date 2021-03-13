@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
     public bool isLeft;
     public bool isAtk;
 
+    //Machado arremessado
+    public GameObject Machado;
+    Vector3 PosMachado;
+    
+
     //controle xbox
     float andar = 20;
 
@@ -61,7 +66,7 @@ public class Player : MonoBehaviour
       
 
         //determina a posição no inicio do jogo
-        posInicial = new Vector2(-12.00f, -1.37f);
+        posInicial = new Vector2(-12.89f, -1.37f);
         transform.position = posInicial;
 
         rig = GetComponent<Rigidbody2D>();
@@ -73,10 +78,12 @@ public class Player : MonoBehaviour
        
     }
 
+    
+
     // Update is called once per frame
     void FixedUpdate()
     {
-       
+      
 
 
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,6 +99,7 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(Speed * Time.deltaTime, rig.velocity.y); //faz o personagem andar para a direita, o time.delta time deixa o movimento mais suave
                 anim.SetBool("isWalking", true); // ativa a animação de andar
                 transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
+                PosMachado = new Vector3(0.500f, 0.680f, 0); //Posição do machado
             }
 
             else
@@ -109,10 +117,11 @@ public class Player : MonoBehaviour
                 rig.velocity = new Vector2(-Speed * Time.deltaTime, rig.velocity.y); //deixa o speed negativo para ele se movimetar para a esquerda
                 anim.SetBool("isWalking", true); // ativa a animação de andar
                 transform.localEulerAngles = new Vector3(0, 180, 0); // deixa o player virado para a esquerda ao pressionar para a esquerda
+                PosMachado = new Vector3(-0.500f, 0.680f, 0); //Posição do machado
             }
 
             // if (Input.GetKeyDown(KeyCode.Space))
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("JumpJoystick"))
 
             {
 
@@ -141,14 +150,18 @@ public class Player : MonoBehaviour
             }
 
             //if (Input.GetKeyDown(KeyCode.K))
-            if (Input.GetButtonDown("Atack")) //codigo de ataque
+            if (Input.GetButtonDown("AtackJoystick")) //codigo de ataque
 
             {
+               
                 Audios.current.PlayMusic(Audios.current.atkSfx);
                 anim.SetBool("isAtk", true);
+                anim.SetBool("animMachado", true);
                 isAtack = true;
                 timeAtk = 0.50f;
+                Instantiate(Machado, transform.position + PosMachado, transform.rotation);
 
+               
                 point.SetActive(true); // ponto de ataque do machado
 
 

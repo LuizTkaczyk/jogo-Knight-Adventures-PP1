@@ -15,7 +15,7 @@ public class GameControllerCheck : MonoBehaviour
 
     void Start()
     {
-        ultimoCheckpoint = new Vector2(-12.21f, -1.37f);
+        ultimoCheckpoint = new Vector2(-12.89f, -1.37f);
         
         if (instance == null)
         {
