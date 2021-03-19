@@ -13,6 +13,8 @@ TagManager:
   - GC
   - checkpoint
   - PainelGameOver
+  - MenuPause
+  - btnRestart
   layers:
   - Default
   - TransparentFX

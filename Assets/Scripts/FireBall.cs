@@ -33,14 +33,7 @@ public class FireBall : MonoBehaviour
 
             Speed = 1f;
            
-
-            
-
-            
-           
-            
-
-            if (!collision.gameObject.GetComponent<Player>().isVisible)
+             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
 
                  Controller.current.RemoveLife(1);

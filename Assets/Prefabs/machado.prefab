@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c933b5f377c524c9424e4f7fdbde19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteRend: {fileID: 0}
   Speed: 8.5
 --- !u!50 &-4702105879709492358
 Rigidbody2D:
@@ -111,10 +110,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.1
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

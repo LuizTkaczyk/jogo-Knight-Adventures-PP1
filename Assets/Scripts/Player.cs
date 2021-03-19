@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rig;
@@ -42,10 +43,11 @@ public class Player : MonoBehaviour
     //Machado arremessado
     public GameObject Machado;
     Vector3 PosMachado;
-    
 
-    //controle xbox
-    float andar = 20;
+    //timer do machado 
+    public float tpsLimite = 10f;
+    private float timerMachado = 0;
+
 
     //posição inicial do player
     public Vector2 posInicial;
@@ -55,12 +57,7 @@ public class Player : MonoBehaviour
     private GameControllerCheck gcc;
 
 
-
-
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
-
-
-    // Start is called before the first frame update
     void Start()
     {
       
@@ -73,17 +70,23 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
 
-        //posInicial = transform.position;
+        
 
-       
     }
 
-    
+
+    IEnumerator AtaqueMachado()
+    {
+        yield return new WaitForSeconds(0.4f);
+        Instantiate(Machado, transform.position + PosMachado, transform.rotation);
+
+
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-      
+        //Walk(direcao);
 
 
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +96,8 @@ public class Player : MonoBehaviour
 
 
             // if (Input.GetKey(KeyCode.D))
-            if (Input.GetAxisRaw("HorizontalJoystick") > 0) //vira/vai pra direita , com o teclado
+            //controles Xbox
+            if ((Input.GetAxisRaw("HorizontalJoystick") > 0) || Input.GetKey(KeyCode.D)) //vira/vai pra direita , com o teclado
 
             {
                 rig.velocity = new Vector2(Speed * Time.deltaTime, rig.velocity.y); //faz o personagem andar para a direita, o time.delta time deixa o movimento mais suave
@@ -111,7 +115,7 @@ public class Player : MonoBehaviour
 
 
             // if (Input.GetKey(KeyCode.A))
-            if (Input.GetAxisRaw("HorizontalJoystick") < 0)  //vira/vai pra esquerda
+            if ((Input.GetAxisRaw("HorizontalJoystick") < 0) || Input.GetKey(KeyCode.A))  //vira/vai pra esquerda
 
             {
                 rig.velocity = new Vector2(-Speed * Time.deltaTime, rig.velocity.y); //deixa o speed negativo para ele se movimetar para a esquerda
@@ -121,7 +125,7 @@ public class Player : MonoBehaviour
             }
 
             // if (Input.GetKeyDown(KeyCode.Space))
-            if (Input.GetButtonDown("JumpJoystick"))
+            if (Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space))
 
             {
 
@@ -138,7 +142,7 @@ public class Player : MonoBehaviour
                 {
                     if (DoubleJump)//pulo duplo
                     {
-                        rig.AddForce(Vector2.up * (JumpForce * 0.9f ), ForceMode2D.Impulse); // codigo para o pulo
+                        rig.AddForce(Vector2.up * (JumpForce * 0.9f), ForceMode2D.Impulse); // codigo para o pulo
                         isJumping = true;
                         anim.SetBool("isJump", true);
                         DoubleJump = false;
@@ -146,35 +150,39 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                
+
             }
 
-            //if (Input.GetKeyDown(KeyCode.K))
-            if (Input.GetButtonDown("AtackJoystick")) //codigo de ataque
+            
+            if(timerMachado > 0)
+            {
+                timerMachado -= Time.deltaTime;
+            }else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
 
             {
-               
+                timerMachado = 6f / tpsLimite;
+                
                 Audios.current.PlayMusic(Audios.current.atkSfx);
                 anim.SetBool("isAtk", true);
                 anim.SetBool("animMachado", true);
-                isAtack = true;
                 timeAtk = 0.50f;
-                Instantiate(Machado, transform.position + PosMachado, transform.rotation);
-
-               
-                point.SetActive(true); // ponto de ataque do machado
-
-
+                
+                StartCoroutine(AtaqueMachado());
+                isAtack = true;
+              
             }
 
-            //if (Input.GetKeyDown(KeyCode.Escape))
+
+
+
+
+            //if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))
             //{
-            //    isPaused = !isPaused;
-            //    pauseMenu.SetActive(isPaused);
-            //    Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+               
+            //        Controller.current.Pause();
+
             //}
-
-
+           
 
             //COMANDOS PARA MOBILE-------------------------------------------------------------------------------------------------------------------------------- -
 
@@ -255,7 +263,7 @@ public class Player : MonoBehaviour
             //    pauseMenu.SetActive(isPaused);
             //    Time.timeScale = Time.timeScale == 0 ? 1 : 0; //Esse comando Pausa o tempo do jogo
             //}
-           
+
 
 
 
@@ -263,6 +271,31 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    
+
+
+
+    //testes inputSystem
+
+    //private void Walk(Vector2 dir)
+    //{
+    //    xVelocity = dir.normalized.x * Speed;
+    //    rig.velocity = new Vector2(xVelocity, rig.velocity.y);
+    //}
+
+    //public void Movimento(InputAction.CallbackContext context)
+    //{
+    //    inputX = context.ReadValue<Vector2>().x;
+    //    anim.SetBool("isWalking", true); // ativa a animação de andar
+    //    transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
+    //    PosMachado = new Vector3(0.500f, 0.680f, 0); //Posição do machado
+    //}
+
+
+
+
+
 
     //PULO NO MOBILE
     public void JumpBt()
