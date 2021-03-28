@@ -58,7 +58,7 @@ public class EnemyGolom : MonoBehaviour
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-                Controller.current.RemoveLife(1); //perde uma vida
+                Controller.current.RemoveLife(); //perde uma vida
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 
             }

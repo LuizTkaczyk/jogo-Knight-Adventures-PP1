@@ -74,6 +74,8 @@ public class Player : MonoBehaviour
 
     }
 
+  
+
 
     IEnumerator AtaqueMachado()
     {
@@ -384,7 +386,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 10)
 
         {
-           Controller.current.RemoveLife(1);
+           Controller.current.RemoveLife();
             // this.transform.position = spawnPoint.transform.position;
             //Destroy(gameObject);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -425,19 +427,5 @@ public class Player : MonoBehaviour
 
     }
 
-    //public void Save()
-    //{
-    //    PlayerSave.SaveGame(this);
-
-    //}
-
-    //public void Load()
-    //{
-    //    PlayerSave.LoadPlayer(this);
-
-    //}
-
-
-
-
+   
 }

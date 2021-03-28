@@ -7,23 +7,24 @@ using UnityEngine.UI;
 public class Controller : MonoBehaviour
 {
 
+    //teste contador de vida
+
+    public int vida;
+    public Text texto;
+    
+    public static Controller current;
+    
     public GameObject life;
     public int PlayerLives;
-    public int Score;
-    public Text ScoreText;
+    //public int Score;
+    //public Text ScoreText;
 
     public Transform Lives;
 
     public GameObject GameOverPanel; //chama o canvas do game over
     //public GameObject btnPause; // referencia ao botão de pause
 
-
-    public static Controller current;
-
-   
     public bool isPaused;
-
-
 
     private Animator anim;
     private GameObject player;
@@ -31,7 +32,7 @@ public class Controller : MonoBehaviour
     private GameObject dragon;
     private GameObject menu;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,80 +45,115 @@ public class Controller : MonoBehaviour
         dragon = GameObject.FindGameObjectWithTag("Dragon"); //faz referencia ao Dragon na classe controller
         menu = GameObject.FindGameObjectWithTag("MenuPause");
 
+        //teste contador de vida
+        texto = GameObject.Find("Vidas").GetComponent<Text>();
+        texto.text = vida.ToString();
+
+        
+
+    }
+
+    void Awake()
+    {
+        //if(current != null)
+        //{
+        //    Destroy(this.gameObject);
+        //    return;
+        //}
+        //current = this;
+        //DontDestroyOnLoad(transform.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ScoreText != null) { // retira o erro da tela de new game
+        //if(ScoreText != null) { // retira o erro da tela de new game
 
-         ScoreText.text = Score.ToString(); // ToString() converte o numero pra string
-        }
+        // ScoreText.text = Score.ToString(); // ToString() converte o numero pra string
+        //}
+        
 
     }
+
+    
 
     public void AddLife(int lifeValue) //add vidas ao personagem
     {
 
 
-        if (PlayerLives < 4) { 
+        //if (PlayerLives < 4)
+        //{
 
-            PlayerLives += lifeValue;
+        //    PlayerLives += lifeValue;
 
-            for (int i = 0; i < lifeValue; i++ )
-            {
-                Instantiate(life, Lives.transform);
-            }
-        }
+        //    for (int i = 0; i < lifeValue; i++)
+        //    {
+        //        Instantiate(life, Lives.transform);
+        //    }
+        //}
 
-        
-        
+
+
+        vida ++;
+        texto.text = vida.ToString();
+
     }
 
-    public void RemoveLife(int lifeValue) //remove as vidas do player
+
+    //public void RemoveLife(int lifeValue)
+    public void RemoveLife() //remove as vidas do player
     {
-            if (Lives.childCount > 0)
-            {
-                PlayerLives -= lifeValue;
-                    
+    //    if (Lives.childCount > 0)
+    //    {
+    //        PlayerLives -= lifeValue;
 
 
-                for (int i = 0; i < lifeValue; i++)
-                {
-                    Destroy(Lives.GetChild(i).gameObject);
-                }
 
-            }
-
-        
+    //        for (int i = 0; i < lifeValue; i++)
+    //        {
+    //            Destroy(Lives.GetChild(i).gameObject);
+    //        }
 
 
-            if (Lives.childCount < 1)
-            {
-
-                menu.GetComponent<MenuPause>().enabled = false; // desativa o menu de pausa ao morrer
-
-                //current.pauseMenu.SetActive(false); //desativa o botão de pause ao morrer
-               
-                player.GetComponent<Player>().isAlive = false;
-                player.GetComponent<Animator>().SetBool("playerDie", true);//pega a animação de morte da classe do player
-                player.GetComponent<Player>().Speed = 0;
-               
-                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX; // congela o player onde estiver
-                player.GetComponent<Rigidbody2D>().simulated = false; // ativa a opção simulated, que deixa o player sem massa.
-                
-
-                //golom.GetComponent<Animator>().SetBool("atk1", false);
-                //dragon.GetComponent<Animator>().SetBool("atk", false);
+    //    }
 
 
-                current.GameOverPanel.SetActive(true); //chama a tela de game-over
-
- 
-            }
+       
 
 
-        
+
+
+        //if (Lives.childCount < 1)
+
+        if (vida < 1)
+        {
+
+            menu.GetComponent<MenuPause>().enabled = false; // desativa o menu de pausa ao morrer
+
+            //current.pauseMenu.SetActive(false); //desativa o botão de pause ao morrer
+
+            player.GetComponent<Player>().isAlive = false;
+            player.GetComponent<Animator>().SetBool("playerDie", true);//pega a animação de morte da classe do player
+            player.GetComponent<Player>().Speed = 0;
+
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX; // congela o player onde estiver
+            player.GetComponent<Rigidbody2D>().simulated = false; // ativa a opção simulated, que deixa o player sem massa.
+
+
+            //golom.GetComponent<Animator>().SetBool("atk1", false);
+            //dragon.GetComponent<Animator>().SetBool("atk", false);
+
+
+            current.GameOverPanel.SetActive(true); //chama a tela de game-over
+            
+
+        }
+        vida--;
+        texto.text = vida.ToString();
+
+
+
+        DontDestroyOnLoad(this);
     }
 
 
@@ -155,10 +191,10 @@ public class Controller : MonoBehaviour
 
 
 
-    public void AddScore(int ScoreValue)
-    {
-        Score += ScoreValue;
-    }
+    //public void AddScore(int ScoreValue)
+    //{
+    //    Score += ScoreValue;
+    //}
 
     public void QuitGame()
     {
@@ -172,6 +208,8 @@ public class Controller : MonoBehaviour
             Application.Quit();
         }
     }
+
+    
 
 
     

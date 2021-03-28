@@ -36,7 +36,7 @@ public class FireBall : MonoBehaviour
              if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
 
-                 Controller.current.RemoveLife(1);
+                 Controller.current.RemoveLife();
                  StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.1f));
                  collision.gameObject.GetComponent<Player>().isVisible = true;
                 
