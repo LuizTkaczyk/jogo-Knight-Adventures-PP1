@@ -386,7 +386,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 10)
 
         {
-           Controller.current.RemoveLife();
+           Controller.current.RemoveLife(1);
             // this.transform.position = spawnPoint.transform.position;
             //Destroy(gameObject);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

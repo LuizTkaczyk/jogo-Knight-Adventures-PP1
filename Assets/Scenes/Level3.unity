@@ -1559,8 +1559,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: {fileID: 2170679930780452597, guid: c97e36c5041839c439a256c64aad7b63, type: 3}
   PlayerLives: 0
-  Score: 0
-  ScoreText: {fileID: 803234692}
   Lives: {fileID: 1782393646}
   GameOverPanel: {fileID: 1010414247}
   isPaused: 0
@@ -3428,7 +3426,7 @@ GameObject:
   - component: {fileID: 1064412076}
   - component: {fileID: 1064412075}
   m_Layer: 0
-  m_Name: GameMenager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

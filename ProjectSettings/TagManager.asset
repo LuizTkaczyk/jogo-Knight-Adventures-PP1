@@ -15,6 +15,7 @@ TagManager:
   - PainelGameOver
   - MenuPause
   - btnRestart
+  - Life
   layers:
   - Default
   - TransparentFX

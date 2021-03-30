@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UIManager : MonoBehaviour
 {
-  public void teste()
-    {
-        Debug.Log("salvoudadso");
-    }
+
+    public static UIManager instance;
+
+    
+
 }

@@ -64,6 +64,7 @@ public class MenuPause : MonoBehaviour
         
         //EventSystem.current.SetSelectedGameObject(MenuReiniciar);
         Controller.current.StartGame();
+        Destroy(Controller.current);
        
         
     }

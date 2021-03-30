@@ -9,17 +9,18 @@ public class Controller : MonoBehaviour
 
     //teste contador de vida
 
-    public int vida;
-    public Text texto;
+    //public static int vida = 3;
+    //public Text texto;
     
     public static Controller current;
     
     public GameObject life;
     public int PlayerLives;
+    public Transform Lives;
     //public int Score;
     //public Text ScoreText;
 
-    public Transform Lives;
+
 
     public GameObject GameOverPanel; //chama o canvas do game over
     //public GameObject btnPause; // referencia ao botão de pause
@@ -45,24 +46,12 @@ public class Controller : MonoBehaviour
         dragon = GameObject.FindGameObjectWithTag("Dragon"); //faz referencia ao Dragon na classe controller
         menu = GameObject.FindGameObjectWithTag("MenuPause");
 
-        //teste contador de vida
-        texto = GameObject.Find("Vidas").GetComponent<Text>();
-        texto.text = vida.ToString();
-
-        
-
+        //life = GameManager.Instance.life;
+        //PlayerLives = GameManager.Instance.PlayerLives;
+        //Lives = GameManager.Instance.Lives;
     }
 
-    void Awake()
-    {
-        //if(current != null)
-        //{
-        //    Destroy(this.gameObject);
-        //    return;
-        //}
-        //current = this;
-        //DontDestroyOnLoad(transform.gameObject);
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -75,57 +64,51 @@ public class Controller : MonoBehaviour
 
     }
 
-    
+   
 
     public void AddLife(int lifeValue) //add vidas ao personagem
     {
 
 
-        //if (PlayerLives < 4)
-        //{
+        if (PlayerLives < 4)
+        {
 
-        //    PlayerLives += lifeValue;
+            PlayerLives += lifeValue;
 
-        //    for (int i = 0; i < lifeValue; i++)
-        //    {
-        //        Instantiate(life, Lives.transform);
-        //    }
-        //}
+            for (int i = 0; i < lifeValue; i++)
+            {
+                Instantiate(life, Lives.transform);
+            }
+        }
 
 
 
-        vida ++;
-        texto.text = vida.ToString();
-
+        //vida++;
+        //texto.text = vida.ToString();
+       
     }
 
 
-    //public void RemoveLife(int lifeValue)
-    public void RemoveLife() //remove as vidas do player
+    public void RemoveLife(int lifeValue)
+    //public void RemoveLife() //remove as vidas do player
     {
-    //    if (Lives.childCount > 0)
-    //    {
-    //        PlayerLives -= lifeValue;
+        if (Lives.childCount > 0)
+        {
+            PlayerLives -= lifeValue;
 
 
 
-    //        for (int i = 0; i < lifeValue; i++)
-    //        {
-    //            Destroy(Lives.GetChild(i).gameObject);
-    //        }
+            for (int i = 0; i < lifeValue; i++)
+            {
+                Destroy(Lives.GetChild(i).gameObject);
+            }
 
 
-    //    }
+        }
 
+       if (Lives.childCount < 1)
 
-       
-
-
-
-
-        //if (Lives.childCount < 1)
-
-        if (vida < 1)
+        //if (vida < 1)
         {
 
             menu.GetComponent<MenuPause>().enabled = false; // desativa o menu de pausa ao morrer
@@ -145,15 +128,12 @@ public class Controller : MonoBehaviour
 
 
             current.GameOverPanel.SetActive(true); //chama a tela de game-over
+          
             
 
         }
-        vida--;
-        texto.text = vida.ToString();
-
-
-
-        DontDestroyOnLoad(this);
+        
+        
     }
 
 
@@ -210,7 +190,6 @@ public class Controller : MonoBehaviour
     }
 
     
-
-
+    
     
 }
