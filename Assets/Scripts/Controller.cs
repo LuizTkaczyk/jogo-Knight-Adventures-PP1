@@ -14,18 +14,18 @@ public class Controller : MonoBehaviour
     
     public static Controller current;
     
-    public GameObject life;
-    public int PlayerLives;
-    public Transform Lives;
+    public  GameObject life; //prefab instanciado
+    private  int PlayerLives ;
+    private Transform Lives;
     //public int Score;
     //public Text ScoreText;
 
 
 
-    public GameObject GameOverPanel; //chama o canvas do game over
+    private GameObject GameOverPanel; //chama o canvas do game over
     //public GameObject btnPause; // referencia ao botão de pause
 
-    public bool isPaused;
+    private bool isPaused;
 
     private Animator anim;
     private GameObject player;
@@ -37,6 +37,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //AddLife(3);
         //RemoveLife(2);
         current = this;
@@ -46,9 +47,14 @@ public class Controller : MonoBehaviour
         dragon = GameObject.FindGameObjectWithTag("Dragon"); //faz referencia ao Dragon na classe controller
         menu = GameObject.FindGameObjectWithTag("MenuPause");
 
-        //life = GameManager.Instance.life;
-        //PlayerLives = GameManager.Instance.PlayerLives;
-        //Lives = GameManager.Instance.Lives;
+        Lives = GameObject.FindWithTag("Lives").transform;
+
+        GameOverPanel = GameObject.FindGameObjectWithTag("MenuPause");
+
+        //life = GameObject.FindGameObjectWithTag("Life");
+
+        
+       
     }
 
     
@@ -56,15 +62,38 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(ScoreText != null) { // retira o erro da tela de new game
 
-        // ScoreText.text = Score.ToString(); // ToString() converte o numero pra string
-        //}
+        DontDestroyOnLoad(menu);
         
+
+        //if (Lives != null)
+        //{ // retira o erro da tela de new game
+
+        //    Destroy(Lives); // ToString() converte o numero pra string
+        //}
+
 
     }
 
-   
+
+    private void Awake()
+    {
+        //DontDestroyOnLoad(menu);
+
+        //if (current == null)
+        //{
+        //    current = this;
+
+        //}
+        //else if (current != this)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //DontDestroyOnLoad(gameObject);
+
+    }
+
+
 
     public void AddLife(int lifeValue) //add vidas ao personagem
     {
@@ -83,24 +112,24 @@ public class Controller : MonoBehaviour
 
 
 
-        //vida++;
-        //texto.text = vida.ToString();
        
     }
 
 
     public void RemoveLife(int lifeValue)
-    //public void RemoveLife() //remove as vidas do player
+    
     {
         if (Lives.childCount > 0)
         {
             PlayerLives -= lifeValue;
 
+            
 
 
             for (int i = 0; i < lifeValue; i++)
             {
                 Destroy(Lives.GetChild(i).gameObject);
+                
             }
 
 
@@ -108,8 +137,10 @@ public class Controller : MonoBehaviour
 
        if (Lives.childCount < 1)
 
-        //if (vida < 1)
+      
         {
+
+            
 
             menu.GetComponent<MenuPause>().enabled = false; // desativa o menu de pausa ao morrer
 
@@ -127,13 +158,14 @@ public class Controller : MonoBehaviour
             //dragon.GetComponent<Animator>().SetBool("atk", false);
 
 
-            current.GameOverPanel.SetActive(true); //chama a tela de game-over
-          
-            
+            GameOverPanel.GetComponent<MenuPause>().MenuRestart();
+           
+
+
 
         }
-        
-        
+
+
     }
 
 
@@ -141,8 +173,8 @@ public class Controller : MonoBehaviour
 
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //recarrega o cenario atual depois de morrer
-        
 
+        
     }
 
     public void StartGame()
@@ -151,11 +183,15 @@ public class Controller : MonoBehaviour
 
         Time.timeScale = Time.timeScale = 1;
         SceneManager.LoadScene(1);
+        Destroy(menu);
+
+
     }
 
     public void Quit()
     {
         SceneManager.LoadScene(0);
+        
     }
 
 
