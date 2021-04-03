@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Cam : MonoBehaviour
 {
+    
     private GameObject player;
     public float Speed;
     public float positionCam;
@@ -13,6 +14,8 @@ public class Cam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         player = GameObject.FindGameObjectWithTag("Player"); // esse comando referencia o player
     }
 
