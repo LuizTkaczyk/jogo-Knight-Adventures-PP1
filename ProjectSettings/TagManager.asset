@@ -19,6 +19,7 @@ TagManager:
   - Lives
   - Over
   - GameOverPanel
+  - Flecha
   layers:
   - Default
   - TransparentFX

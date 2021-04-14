@@ -29,11 +29,11 @@ public class Parallax : MonoBehaviour
 
         transform.position = new Vector3(StartPos + Distance, transform.position.y, transform.position.z);
 
-        if(RePos > StartPos + lenght)
+        if(RePos > StartPos + lenght / 2) //divide por 2 para q o o fundo aparece antes do fim da câmera
         {
             StartPos += lenght;
 
-        }else if (RePos < StartPos - lenght)
+        }else if (RePos < StartPos - lenght / 2) //divide por 2 para q o o fundo aparece antes do fim da câmera
         {
             StartPos -= lenght;
         }

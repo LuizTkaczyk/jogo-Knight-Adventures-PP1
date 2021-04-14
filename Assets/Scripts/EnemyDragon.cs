@@ -91,7 +91,8 @@ public class EnemyDragon : MonoBehaviour
             
 
             anim.SetTrigger("die");
-            Destroy(gameObject,0.7f);
+            Destroy(this);
+            Destroy(gameObject, 0.7f);
 
         }
     }

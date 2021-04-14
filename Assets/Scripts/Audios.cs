@@ -12,6 +12,8 @@ public class Audios : MonoBehaviour
     public AudioClip coins;
     public AudioClip fireBall;
     private AudioSource audioSurce;
+    public AudioClip flecha;
+    public AudioClip morteAqueiro;
     
 
 

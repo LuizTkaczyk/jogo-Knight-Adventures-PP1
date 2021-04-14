@@ -159,7 +159,8 @@ public class Player : MonoBehaviour
             if(timerMachado > 0)
             {
                 timerMachado -= Time.deltaTime;
-            }else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
+            }
+            else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
 
             {
                 timerMachado = 6f / tpsLimite;
