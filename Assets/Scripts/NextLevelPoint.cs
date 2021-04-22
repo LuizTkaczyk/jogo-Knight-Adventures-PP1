@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class NextLevelPoint : MonoBehaviour
 {
     public string levelName;
-    
-    
-   
+
+    public Animator transicaoCena;
+    void Start()
+    {
+        
+    }
+
 
     void Update()
     {
@@ -20,8 +24,16 @@ public class NextLevelPoint : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
 
-            
-            SceneManager.LoadScene(levelName);
+
+            StartCoroutine("LoadLevel");
         }
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transicaoCena.SetTrigger("Start");
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene(levelName);
     }
 }

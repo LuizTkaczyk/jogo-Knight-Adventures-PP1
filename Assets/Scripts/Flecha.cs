@@ -7,19 +7,21 @@ public class Flecha : MonoBehaviour
     Rigidbody2D rig;
 
     //perseguir o player
-    float moveSpeed = 15f;
+    float moveSpeed = 18f;
     private Player alvo;
     Vector2 moveDirection;
     private Animator anim;
+    public float elevacaoFlecha;
 
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        rig = GetComponent<Rigidbody2D>();//codigo para o arqueiro perseguir o player
+        rig = GetComponent<Rigidbody2D>();//codigos para o arqueiro perseguir o player
         alvo = GameObject.FindObjectOfType<Player>();
         moveDirection = (alvo.transform.position - transform.position).normalized * moveSpeed;
-        rig.velocity = new Vector2(moveDirection.x, moveDirection.y);//ate aqui
+        rig.velocity = new Vector2(moveDirection.x +5, moveDirection.y+elevacaoFlecha);//ate aqui
+        Destroy(gameObject, 3f);
         
     }
 
@@ -41,7 +43,8 @@ public class Flecha : MonoBehaviour
             {
 
                 Controller.current.RemoveLife(1);
-                StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.1f));
+                
+                StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.040f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
 
 

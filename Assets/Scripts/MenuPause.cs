@@ -25,19 +25,6 @@ public class MenuPause : MonoBehaviour
     private void Awake()
     {
 
-       
-
-        //if (current == null)
-        //{
-        //    current = this;
-        //    DontDestroyOnLoad(gameObject);
-
-        //}
-        //else if (current != this)
-        //{
-        //    Destroy(gameObject);
-        //}
-
 
     }
 

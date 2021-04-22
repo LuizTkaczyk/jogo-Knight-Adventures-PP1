@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
     //public Checkpoint spawnCheck;
     private GameControllerCheck gcc;
 
+    private GameObject fireball;
+
 
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
     void Start()
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
 
+        fireball = GameObject.FindGameObjectWithTag("fireball");
         
 
     }
@@ -250,120 +253,26 @@ public class Player : MonoBehaviour
 
 
 
-            if (isVisible) //ativa quando recebe danos de um inimigo, aquelas piscadinhas
+            if (isVisible) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
             {
+               
+                
                 visibleCount += Time.deltaTime;
                 if (visibleCount >= visibleTime)
                 {
-                    isVisible = false;
+                    
                     visibleCount = 0;
+                    isVisible = false;
+
+                    SpriteRend.color = Color.white;
+
                 }
             }
-
-            //if (Input.GetKeyDown(KeyCode.Escape))
-            //{
-            //    isPaused = !isPaused;
-            //    pauseMenu.SetActive(isPaused);
-            //    Time.timeScale = Time.timeScale == 0 ? 1 : 0; //Esse comando Pausa o tempo do jogo
-            //}
-
-
-
-
-
         }
 
+        
+
     }
-
-    
-
-
-
-    //testes inputSystem
-
-    //private void Walk(Vector2 dir)
-    //{
-    //    xVelocity = dir.normalized.x * Speed;
-    //    rig.velocity = new Vector2(xVelocity, rig.velocity.y);
-    //}
-
-    //public void Movimento(InputAction.CallbackContext context)
-    //{
-    //    inputX = context.ReadValue<Vector2>().x;
-    //    anim.SetBool("isWalking", true); // ativa a animação de andar
-    //    transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
-    //    PosMachado = new Vector3(0.500f, 0.680f, 0); //Posição do machado
-    //}
-
-
-
-
-
-
-    //PULO NO MOBILE
-    public void JumpBt()
-    {
-        if (isAlive)
-        {
-            if (!isJumping)
-            {
-                rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-                isJumping = true;
-                anim.SetBool("isJump", true);
-                Audios.current.PlayMusic(Audios.current.jumpSfx);
-
-
-            }
-        }
-    }
-
-    //MACHADO NO MOBILE - não funciona
-
-    //public void Atack()
-    //{
-    //    if (isAtack)
-    //    {
-
-            
-    //            anim.SetBool("isAtk", true);
-    //            isAtack = true;
-    //            timeAtk = 0.25f;
-    //            point.SetActive(true); // ponto de ataque do machado
-
-    //    }
-
-    //    timeAtk -= Time.deltaTime;
-
-    //    if (timeAtk <= 0f)
-    //    {
-    //        anim.SetBool("isAtk", false); // codigo de ataque
-    //        isAtack = false;
-    //        point.SetActive(false);
-    //    }
-
-
-
-
-
-    //    if (isVisible) //ativa quando recebe danos de um inimigo, aquelas piscadinhas
-    //    {
-    //        visibleCount += Time.deltaTime;
-    //        if (visibleCount >= visibleTime)
-    //        {
-    //            isVisible = false;
-    //            visibleCount = 0;
-    //        }
-    //    }
-
-
-
-    //}
-
-
-
-     
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -400,33 +309,23 @@ public class Player : MonoBehaviour
        
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == 8)
-    //    {
-    //        isJumping = false;
-    //        anim.SetBool("isJump", false);
-    //    }
-    //}
 
 
     public IEnumerator PlayerDemage(float DemageTime)
     {
 
-        SpriteRend.enabled = false; //desativa o spriteRenderer
-        yield return new WaitForSeconds(DemageTime); //depois de 3 segundos é executado o comando listado abaixo
-        
-        SpriteRend.enabled = true;
-        yield return new WaitForSeconds(DemageTime);
-        SpriteRend.enabled = true;
-        yield return new WaitForSeconds(DemageTime);
-        
+        for (int i = 0; i < 15; i++)
+        {
+            SpriteRend.color = Color.red;
+           yield return new WaitForSeconds(DemageTime); //depois n segundos é executado o comando listado abaixo
 
+            SpriteRend.color = Color.white;
+           yield return new WaitForSeconds(DemageTime);
 
-
-        SpriteRend.enabled = true;
+        }
+       
 
     }
 
-   
+
 }

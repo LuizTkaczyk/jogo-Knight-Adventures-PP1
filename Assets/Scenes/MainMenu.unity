@@ -187,6 +187,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &336695310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5515973078707804367, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 301.14902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 423.80182
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100.866745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654951, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515973079285654952, guid: 772c97668edd41546a23fd0ce67a7230,
+        type: 3}
+      propertyPath: m_Name
+      value: FadeNiveis
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 772c97668edd41546a23fd0ce67a7230, type: 3}
 --- !u!1 &385705649
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +351,7 @@ GameObject:
   - component: {fileID: 1083070152}
   - component: {fileID: 1083070151}
   - component: {fileID: 1083070150}
+  - component: {fileID: 1083070153}
   m_Layer: 5
   m_Name: start
   m_TagString: Untagged
@@ -358,6 +433,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: PlayMain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1083070151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +481,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083070148}
   m_CullTransparentMesh: 0
+--- !u!114 &1083070153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083070148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa615a215a91c7742abd10ebac82605c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1474913339
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,14 +727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: {fileID: 0}
-  PlayerLives: 0
-  Score: 0
-  ScoreText: {fileID: 0}
-  Lives: {fileID: 0}
-  GameOverPanel: {fileID: 0}
-  btnPause: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  isPaused: 0
 --- !u!4 &1628113924
 Transform:
   m_ObjectHideFlags: 0
