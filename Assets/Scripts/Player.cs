@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     public SpriteRenderer SpriteRend;
 
-    public float visibleTime; //tempo em que o player fica invisivel ao receber um dano
+    private float visibleTime = 1.4f; //tempo em que o player fica invisivel ao receber um dano
     public bool isVisible;
     private float visibleCount;
 
@@ -263,8 +263,9 @@ public class Player : MonoBehaviour
                     
                     visibleCount = 0;
                     isVisible = false;
+                    this.GetComponent<SpriteRenderer>().color = Color.white;
 
-                    SpriteRend.color = Color.white;
+                    //SpriteRend.color = Color.white;
 
                 }
             }
@@ -321,10 +322,10 @@ public class Player : MonoBehaviour
 
             SpriteRend.color = Color.white;
            yield return new WaitForSeconds(DemageTime);
-
+           
         }
-       
 
+        
     }
 
 

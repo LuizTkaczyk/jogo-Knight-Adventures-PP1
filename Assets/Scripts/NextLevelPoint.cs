@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelPoint : MonoBehaviour
 {
+    //public static NextLevelPoint current;
     public string levelName;
 
     public Animator transicaoCena;
@@ -23,13 +24,11 @@ public class NextLevelPoint : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-
-
-            StartCoroutine("LoadLevel");
+             StartCoroutine("LoadLevel");
         }
     }
 
-    IEnumerator LoadLevel()
+    public IEnumerator LoadLevel()
     {
         transicaoCena.SetTrigger("Start");
         yield return new WaitForSeconds(2);

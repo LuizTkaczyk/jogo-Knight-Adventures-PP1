@@ -12,13 +12,19 @@ public class MenuPause : MonoBehaviour
     public GameObject RestartMenu;
     public GameObject pausePrimeiroBtn;
     public GameObject canvas;
-   
     public bool isAlive;
+
+
+    //teste transiçao para o menu
+    public string levelName;
+    public Animator transicaoCena;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+        DontDestroyOnLoad(this);
        
     }
 
@@ -92,7 +98,16 @@ public class MenuPause : MonoBehaviour
 
     public void Quit()
     {
+        
         SceneManager.LoadScene(0);
-
+        //StartCoroutine(LoadLevel());
     }
+
+    //public IEnumerator LoadLevel()
+    //{
+    //    transicaoCena.SetTrigger("Start");
+    //    yield return new WaitForSeconds(2);
+
+    //    SceneManager.LoadScene(0);
+    //}
 }

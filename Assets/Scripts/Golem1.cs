@@ -27,22 +27,12 @@ public class Golem1 : MonoBehaviour
 
     // Update is called once per frame
 
-   
-
-
-    
-    
 
     void Update() // cofigura se o inimigo vai para a esquerda ou direita
     {
-
-    
-        movimentoGolem();
+         movimentoGolem();
        
-
     }
-
-  
 
     void movimentoGolem()
     {
@@ -98,9 +88,4 @@ public class Golem1 : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, areaDeteccao);
-    }
 }

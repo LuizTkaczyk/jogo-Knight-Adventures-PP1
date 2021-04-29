@@ -115,8 +115,7 @@ public class Catapulta : MonoBehaviour
         {
 
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
-            Audios.current.PlayMusic(Audios.current.morteAqueiro);
-            anim.SetTrigger("Die");
+           
             Destroy(gameObject, 3f);
             Destroy(this);
 

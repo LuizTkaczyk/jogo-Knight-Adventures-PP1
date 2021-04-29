@@ -8,6 +8,7 @@ public class GolemIA : MonoBehaviour
     private int andandoDireita;
     public float velocidade;
     private float movimentoHorizontal;
+    private Animator anim;
    
 
     public LayerMask layerPermitida;
@@ -22,6 +23,8 @@ public class GolemIA : MonoBehaviour
     public bool modoPersegue;
     private bool seguindoPlayer;
     private bool estaPulando;
+    public float puloInimigo;
+    public float distanciaPlayer;
   
     [SerializeField]
     private Player player;
@@ -33,7 +36,7 @@ public class GolemIA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = gameObject.GetComponent<Animator>();
         rig = gameObject.GetComponent<Rigidbody2D>();
         andandoDireita = 1;
     }
@@ -41,7 +44,8 @@ public class GolemIA : MonoBehaviour
       void FixedUpdate()
     {
         
-        Movimento(movimentoHorizontal * Time.fixedDeltaTime, estaPulando);
+        Movimento(movimentoHorizontal * Time.fixedDeltaTime, false);
+       
         
     }
 
@@ -50,7 +54,7 @@ public class GolemIA : MonoBehaviour
     void Update()
     {
         //segue o player
-        var diferencaPlayer = player.gameObject.transform.position.x - transform.position.x;
+        var diferencaPlayer = player.gameObject.transform.position.x - transform.position.x + distanciaPlayer;
         seguindoPlayer = Mathf.Abs(diferencaPlayer) < areaDeteccao;
         
         if(modoPersegue && seguindoPlayer)
@@ -81,8 +85,16 @@ public class GolemIA : MonoBehaviour
         Debug.DrawRay(new Vector2(transform.position.x, inicioY), Vector2.right, Color.blue);
         if(raycastParedeDireita.collider != null)
         {
+            if (!seguindoPlayer)
+            {
+                andandoDireita = -1;
+            }
+            else
+            {
+                Pula();
+            }
 
-          andandoDireita = -1;
+          
           
         }
 
@@ -92,7 +104,15 @@ public class GolemIA : MonoBehaviour
 
         if (raycastParedeEsquerda.collider != null)
         {
-           andandoDireita = 1;
+            if (!seguindoPlayer)
+            {
+                andandoDireita = 1;
+            }
+            else
+            {
+                Pula();
+            }
+           
            
         }
 
@@ -100,9 +120,9 @@ public class GolemIA : MonoBehaviour
         var raycastChaoDireita = Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down, 1f, layerPermitida);
         Debug.DrawRay(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down, Color.red);
         if(raycastChaoDireita.collider == null)
-        {  
+        {
             andandoDireita = -1;
-           
+
         }
 
         //detecta se não houver chão na esquerda e volta
@@ -114,6 +134,16 @@ public class GolemIA : MonoBehaviour
             
         }
 
+    }
+
+    void Pula()
+    {
+        
+
+        rig.AddForce(Vector2.up * puloInimigo);
+        anim.SetTrigger("pula");
+        
+        
     }
 
   
@@ -137,6 +167,7 @@ public class GolemIA : MonoBehaviour
         // Suavizando a velocidade de movimento
         Vector3 velocity = Vector3.zero;
         rig.velocity = Vector3.SmoothDamp(rig.velocity, velocidadeJogador, ref velocity, suavizacaoMovimento);
+        anim.SetTrigger("anda");
     }
 
 
@@ -169,6 +200,44 @@ public class GolemIA : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaDeteccao);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        {
+            anim.SetTrigger("ataca");
+
+            Debug.Log("acertou");
+
+            if (!collision.gameObject.GetComponent<Player>().isVisible)
+            {
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
+                Controller.current.RemoveLife(1); //perde uma vida
+                StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
+                collision.gameObject.GetComponent<Player>().isVisible = true;
+            }
+        }
+
+        if (collision.gameObject.layer == 9) //layer do machado !
+        {
+
+
+            anim.SetTrigger("morre");
+            velocidade = 0;
+
+            Destroy(gameObject, 2f);
+
+            GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
+            GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
+
+
+        }
     }
 
 }

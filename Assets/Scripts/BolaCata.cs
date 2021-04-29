@@ -38,19 +38,27 @@ public class BolaCata : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            anim.SetTrigger("bolaExplo");
 
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f);
                 Controller.current.RemoveLife(1);
 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.040f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
-
+                
 
             }
 
+            
+        }
 
+        if(collision.gameObject.layer == 8)
+        {
+            rig.simulated = false;
+            anim.SetTrigger("bolaExplo");
+            Destroy(gameObject, 0.25f);
         }
 
 

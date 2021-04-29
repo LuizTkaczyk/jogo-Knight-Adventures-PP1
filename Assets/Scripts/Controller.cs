@@ -63,8 +63,8 @@ public class Controller : MonoBehaviour
     void Update()
     {
 
-        DontDestroyOnLoad(menu);
-        
+        //DontDestroyOnLoad(menu);
+
 
         //if (Lives != null)
         //{ // retira o erro da tela de new game
