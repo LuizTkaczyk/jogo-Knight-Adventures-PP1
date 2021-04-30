@@ -14,7 +14,7 @@ public class Arqueiro : MonoBehaviour
     private Animator anim;
     private Vector3 posFlecha;
     private bool isAtk;
-    //timer da flecha
+    //timer da flechas
     public float tpsLimite = 10f;
     private float timerFlecha = 0;
     public float tempoFlecha;
