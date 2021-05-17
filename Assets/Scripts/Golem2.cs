@@ -72,7 +72,7 @@ public class Golem2 : MonoBehaviour
             Destroy(gameObject,2f);
 
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
-            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().simulated = false;
 
 
         }

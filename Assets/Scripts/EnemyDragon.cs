@@ -88,8 +88,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-            GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
-            
+            GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
+
 
             anim.SetTrigger("die");
             Destroy(this);

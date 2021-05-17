@@ -7,7 +7,7 @@ public class GameControllerCheck : MonoBehaviour
     //scrip para saber a posição do checkpoint
    
     public static GameControllerCheck instance;
-    public Vector2 ultimoCheckpoint;
+    public Vector2 LastCheckpoint;
     
 
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class GameControllerCheck : MonoBehaviour
 
     void Start()
     {
-        ultimoCheckpoint = new Vector2(-12.89f, -1.37f);
+        LastCheckpoint = new Vector2(-12.89f, -1.37f);
         
         if (instance == null)
         {

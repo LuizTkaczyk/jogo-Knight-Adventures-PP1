@@ -98,16 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a98155555710da418aa4dd55f65ce33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 12
-  layerPermitida:
+  velocity: 9.44
+  allowedLayer:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 41216
   raycastOffset: {x: 0.44, y: -0.46}
-  forcaDoPulo: 2.86
-  areaDeteccao: 3
-  modoPersegue: 1
-  puloInimigo: 35.07
-  distanciaPlayer: 0
+  jumpForce: 10
+  detectionArea: 3.77
+  chaseMode: 1
+  enemyJump: 0
+  playerDistance: 1.09
   player: {fileID: 0}
 --- !u!61 &230825531482094226
 BoxCollider2D:

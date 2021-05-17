@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Animator anim;
 
     
-    public GameObject pauseMenu;
+    //public GameObject pauseMenu;
     public bool isPaused;
 
     public float Speed;
@@ -41,22 +41,24 @@ public class Player : MonoBehaviour
     public bool isAtk;
 
     //Machado arremessado
-    public GameObject Machado;
+    public GameObject Axe;
     Vector3 PosMachado;
+
+    public GameObject AxePitch;
 
     //timer do machado 
     public float tpsLimite = 10f;
-    private float timerMachado = 0;
+    private float timerAxe = 0;
 
 
     //posição inicial do player
-    public Vector2 posInicial;
+    private Vector2 posInitial;
 
     //respaw  player
     //public Checkpoint spawnCheck;
     private GameControllerCheck gcc;
 
-    private GameObject fireball;
+    //private GameObject fireball;
 
 
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
@@ -65,14 +67,14 @@ public class Player : MonoBehaviour
       
 
         //determina a posição no inicio do jogo
-        posInicial = new Vector2(-12.89f, -1.37f);
-        transform.position = posInicial;
+        posInitial = new Vector2(-12.89f, -1.37f);
+        transform.position = posInitial;
 
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
 
-        fireball = GameObject.FindGameObjectWithTag("fireball");
+        //fireball = GameObject.FindGameObjectWithTag("fireball");
         
 
     }
@@ -83,7 +85,8 @@ public class Player : MonoBehaviour
     IEnumerator AtaqueMachado()
     {
         yield return new WaitForSeconds(0.4f);
-        Instantiate(Machado, transform.position + PosMachado, transform.rotation);
+        //Instantiate(Machado, transform.position + PosMachado, transform.rotation);
+        Instantiate(Axe, AxePitch.transform.position, transform.rotation);
 
 
     }
@@ -159,14 +162,14 @@ public class Player : MonoBehaviour
             }
 
             
-            if(timerMachado > 0)
+            if(timerAxe > 0)
             {
-                timerMachado -= Time.deltaTime;
+                timerAxe -= Time.deltaTime;
             }
             else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
 
             {
-                timerMachado = 6f / tpsLimite;
+                timerAxe =5f / tpsLimite;
                 
                 Audios.current.PlayMusic(Audios.current.atkSfx);
                 anim.SetBool("isAtk", true);
@@ -277,7 +280,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8) 
+        {
+            isJumping = false;
+            anim.SetBool("isJump", false);
+        }
+
+        if (collision.gameObject.layer == 16)
         {
             isJumping = false;
             anim.SetBool("isJump", false);
@@ -286,8 +295,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "checkpoint")
         {
-            posInicial = collision.gameObject.transform.position; //pega a posição do player ao passar no checkpoint
-            transform.position = posInicial;
+            posInitial = collision.gameObject.transform.position; //pega a posição do player ao passar no checkpoint
+            transform.position = posInitial;
             //Destroy(collision.gameObject);
         }
 
@@ -297,12 +306,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 10)
 
         {
-           Controller.current.RemoveLife(1);
-            // this.transform.position = spawnPoint.transform.position;
-            //Destroy(gameObject);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            Controller.current.RemoveLife(1);
             gcc = GameObject.FindGameObjectWithTag("GC").GetComponent<GameControllerCheck>();
-            transform.position = gcc.ultimoCheckpoint;
+            transform.position = gcc.LastCheckpoint;
 
            
         }

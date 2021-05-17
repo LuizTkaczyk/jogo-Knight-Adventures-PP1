@@ -13,7 +13,7 @@ public class Golem1 : MonoBehaviour
 
     private Animator anim;
     private float TimeDirection;
-    public float areaDeteccao;
+    //public float DetectionArea;
 
 
 
@@ -81,8 +81,8 @@ public class Golem1 : MonoBehaviour
             Speed = 0;
             anim.SetTrigger("die");
             Destroy(gameObject, 2f);
-            GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
-            GetComponent<BoxCollider2D>().enabled = false;
+            //GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
+            GetComponent<Rigidbody2D>().simulated = false;
 
 
         }

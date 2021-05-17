@@ -7,9 +7,6 @@ public class LeftArrowUi : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Player player;
    
-
-    
-
     // Start is called before the first frame update
     void Start()
     {

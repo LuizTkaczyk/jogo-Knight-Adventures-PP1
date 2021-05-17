@@ -8,7 +8,8 @@ public class NextLevelPoint : MonoBehaviour
     //public static NextLevelPoint current;
     public string levelName;
 
-    public Animator transicaoCena;
+    public Animator SceneTransition;
+
     void Start()
     {
         
@@ -30,7 +31,7 @@ public class NextLevelPoint : MonoBehaviour
 
     public IEnumerator LoadLevel()
     {
-        transicaoCena.SetTrigger("Start");
+        SceneTransition.SetTrigger("Start");
         yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene(levelName);

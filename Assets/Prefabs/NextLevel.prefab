@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level2
-  transicaoCena: {fileID: 0}
+  SceneTransition: {fileID: 0}

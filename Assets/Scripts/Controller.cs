@@ -142,7 +142,7 @@ public class Controller : MonoBehaviour
 
             
 
-            menu.GetComponent<MenuPause>().enabled = false; // desativa o menu de pausa ao morrer
+            menu.GetComponent<PauseMenu>().enabled = false; // desativa o menu de pausa ao morrer
 
             //current.pauseMenu.SetActive(false); //desativa o botão de pause ao morrer
 
@@ -158,7 +158,7 @@ public class Controller : MonoBehaviour
             //dragon.GetComponent<Animator>().SetBool("atk", false);
 
 
-            GameOverPanel.GetComponent<MenuPause>().MenuRestart();
+            GameOverPanel.GetComponent<PauseMenu>().MenuRestart();
            
 
 

@@ -11,10 +11,11 @@ public class Audios : MonoBehaviour
     public AudioClip potion;
     public AudioClip coins;
     public AudioClip fireBall;
-    private AudioSource audioSurce;
-    public AudioClip flecha;
-    public AudioClip morteAqueiro;
-    
+    public AudioSource audioSurce;
+    public AudioClip arrow;
+    public AudioClip deathArcher;
+    public AudioClip cataExplosion;
+
 
 
 

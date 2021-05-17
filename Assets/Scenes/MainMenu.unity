@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuPrincip: {fileID: 1474913339}
-  pausePrimeiroBtn: {fileID: 1083070148}
+  pauseFirstBtn: {fileID: 1083070148}
 --- !u!1 &1987795798
 GameObject:
   m_ObjectHideFlags: 0
