@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Archer : MonoBehaviour
@@ -26,7 +25,7 @@ public class Archer : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-       
+
         player = GameObject.FindGameObjectWithTag("Player");
 
     }
@@ -35,7 +34,6 @@ public class Archer : MonoBehaviour
     {
         Instantiate(arrow, shotPoint.position, shotPoint.rotation);
         Audios.current.PlayMusic(Audios.current.arrow);
-
     }
 
 
@@ -43,13 +41,11 @@ public class Archer : MonoBehaviour
     {
         yield return new WaitForSeconds(tempoFlecha);
         Shoot();
-        
+
     }
 
     private void Update()
     {
-
-
         if (player != null)
         {
             float Distance = player.transform.position.x - transform.position.x;
@@ -71,12 +67,10 @@ public class Archer : MonoBehaviour
                 timerFlecha = 6f / tpsLimite;
                 StartCoroutine(AtaqueFlecha());
                 anim.SetTrigger("Ataque");
-                
+
 
                 isAtk = true;
             }
-
-
 
             if (isAtk)
             {
@@ -89,8 +83,6 @@ public class Archer : MonoBehaviour
             }
         }
 
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -98,9 +90,6 @@ public class Archer : MonoBehaviour
 
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
-
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 //collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
@@ -114,20 +103,12 @@ public class Archer : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-           
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             Audios.current.PlayMusic(Audios.current.deathArcher);
             anim.SetTrigger("Die");
             Destroy(gameObject, 3f);
             Destroy(this);
-  
-
         }
     }
-
-
-
-
-
 
 }

@@ -9,10 +9,11 @@ public class NextLevelPoint : MonoBehaviour
     public string levelName;
 
     public Animator SceneTransition;
+    public GameObject player;
 
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -23,9 +24,12 @@ public class NextLevelPoint : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        
+        if (collision.gameObject.tag == "Player")
         {
-             StartCoroutine("LoadLevel");
+             
+            StartCoroutine("LoadLevel");
+            StartCoroutine("Invencible");
         }
     }
 
@@ -35,5 +39,13 @@ public class NextLevelPoint : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene(levelName);
+    }
+
+    public IEnumerator Invencible() //o inimigo não é atingido apos tocar o loadLevel
+    {
+
+        player.GetComponent<Rigidbody2D>().simulated = false;
+        yield return new WaitForSeconds(3);
+
     }
 }
