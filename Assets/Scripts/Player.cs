@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rig;
     private Animator anim;
 
-    
+
     //public GameObject pauseMenu;
     public bool isPaused;
 
@@ -58,13 +58,14 @@ public class Player : MonoBehaviour
     //public Checkpoint spawnCheck;
     private GameControllerCheck gcc;
 
-    //private GameObject fireball;
+
+
 
 
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
     void Start()
     {
-      
+
 
         //determina a posição no inicio do jogo
         posInitial = new Vector2(-12.89f, -1.37f);
@@ -75,11 +76,11 @@ public class Player : MonoBehaviour
         SpriteRend = GetComponent<SpriteRenderer>();
 
         //fireball = GameObject.FindGameObjectWithTag("fireball");
-        
+
 
     }
 
-  
+
 
 
     IEnumerator AtaqueMachado()
@@ -88,17 +89,23 @@ public class Player : MonoBehaviour
         //Instantiate(Machado, transform.position + PosMachado, transform.rotation);
         Instantiate(Axe, AxePitch.transform.position, transform.rotation);
 
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Walk(direcao);
+
+        //if (inputEnable)
+        //{
+        //    if (Input.GetKey(KeyCode.H))
+        //    {
+        //        Debug.Log("Apertou");
+        //    }
+        //}
 
 
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
-        if (isAlive)
+        if (isAlive == true)
         {
 
 
@@ -112,6 +119,9 @@ public class Player : MonoBehaviour
                 anim.SetBool("isWalking", true); // ativa a animação de andar
                 transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
                 PosMachado = new Vector3(0.500f, 0.680f, 0); //Posição do machado
+
+
+
             }
 
             else
@@ -161,86 +171,25 @@ public class Player : MonoBehaviour
 
             }
 
-            
-            if(timerAxe > 0)
+
+            if (timerAxe > 0)
             {
                 timerAxe -= Time.deltaTime;
             }
             else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
 
             {
-                timerAxe =5f / tpsLimite;
-                
+                timerAxe = 5f / tpsLimite;
+
                 Audios.current.PlayMusic(Audios.current.atkSfx);
                 anim.SetBool("isAtk", true);
                 anim.SetBool("animMachado", true);
                 timeAtk = 0.50f;
-                
+
                 StartCoroutine(AtaqueMachado());
                 isAtack = true;
-              
+
             }
-
-
-
-
-
-            //if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))
-            //{
-               
-            //        Controller.current.Pause();
-
-            //}
-           
-
-            //COMANDOS PARA MOBILE-------------------------------------------------------------------------------------------------------------------------------- -
-
-            //if (isRight) //vira/vai pra direita , com o teclado
-
-            //{
-            //    rig.velocity = new Vector2(Speed * Time.deltaTime, rig.velocity.y); //faz o personagem andar para a direita, o time.delta time deixa o movimento mais suave
-            //    anim.SetBool("isWalking", true); // ativa a animação de andar
-            //    transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
-            //}
-            //else
-            //{
-            //    rig.velocity = new Vector2(0f, rig.velocity.y); //codigo para o player não deslizar apos parar de correr
-            //    anim.SetBool("isWalking", false); // ativa a animação de andar
-
-            //}
-
-
-
-            //if (isLeft)  //vira/vai pra esquerda
-
-            //{
-            //    rig.velocity = new Vector2(-Speed * Time.deltaTime, rig.velocity.y); //deixa o speed negativo para ele se movimetar para a esquerda
-            //    anim.SetBool("isWalking", true); // ativa a animação de andar
-            //    transform.localEulerAngles = new Vector3(0, 180, 0); // deixa o player virado para a esquerda ao pressionar para a esquerda
-            //}
-
-            ////if (isJump && !isJumping) - não ligar, já tem um método
-
-            ////{
-            ////    rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // codigo para o pulo
-            ////    isJumping = true;
-            ////    anim.SetBool("isJump", true);
-            ////    Audios.current.PlayMusic(Audios.current.jumpSfx);
-            ////}
-
-            //if (isAtk && !isAtack) //codigo de ataque
-
-            //{
-            //    Audios.current.PlayMusic(Audios.current.atkSfx);
-            //    anim.SetBool("isAtk", true);
-            //    isAtack = true;
-            //    timeAtk = 0.7f;
-
-            //    point.SetActive(true); // ponto de ataque do machado
-
-
-
-            //}
 
             timeAtk -= Time.deltaTime; //ativado tanto nos comandos mobile quanto pc
 
@@ -256,31 +205,28 @@ public class Player : MonoBehaviour
 
 
 
-            if (isVisible) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
+            if (isVisible == true) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
             {
-               
-                
+
                 visibleCount += Time.deltaTime;
                 if (visibleCount >= visibleTime)
                 {
-                    
+                    //Debug.Log("acertou");
                     visibleCount = 0;
                     isVisible = false;
                     this.GetComponent<SpriteRenderer>().color = Color.white;
-
-                    //SpriteRend.color = Color.white;
 
                 }
             }
         }
 
-        
+
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 8) 
+        if (collision.gameObject.layer == 8)
         {
             isJumping = false;
             anim.SetBool("isJump", false);
@@ -311,10 +257,10 @@ public class Player : MonoBehaviour
             gcc = GameObject.FindGameObjectWithTag("GC").GetComponent<GameControllerCheck>();
             transform.position = gcc.LastCheckpoint;
 
-           
+
         }
 
-       
+
     }
 
 
@@ -325,14 +271,14 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 15; i++)
         {
             SpriteRend.color = Color.red;
-           yield return new WaitForSeconds(DemageTime); //depois n segundos é executado o comando listado abaixo
+            yield return new WaitForSeconds(DemageTime); //depois n segundos é executado o comando listado abaixo
 
             SpriteRend.color = Color.white;
-           yield return new WaitForSeconds(DemageTime);
-           
+            yield return new WaitForSeconds(DemageTime);
+
         }
 
-        
+
     }
 
 

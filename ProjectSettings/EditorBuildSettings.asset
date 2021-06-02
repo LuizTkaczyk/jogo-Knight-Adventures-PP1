@@ -23,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: dbdc6bf7b72e2ff49bb5563133f38ac3
+  - enabled: 1
+    path: Assets/Scenes/TranLevel1.unity
+    guid: 386f94edbbe97dd4d837f9fc11048f05
+  - enabled: 1
+    path: Assets/Scenes/TranLevel2.unity
+    guid: 03328a5fafc5dae499b5eee2d77ad994
+  - enabled: 1
+    path: Assets/Scenes/TranLevel3.unity
+    guid: cb2c3c58cefe27d40a53023774b14ebe
+  - enabled: 1
+    path: Assets/Scenes/TranLevel4.unity
+    guid: ad9576207cc90c8409af0b56f6341c9c
+  - enabled: 1
+    path: Assets/Scenes/TranLevel5.unity
+    guid: b0bfde876d3905f458171e408eb86bca
   m_configObjects: {}

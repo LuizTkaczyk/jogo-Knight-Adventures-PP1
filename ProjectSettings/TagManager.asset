@@ -23,6 +23,9 @@ TagManager:
   - Fade
   - Machado
   - telaPause
+  - foot
+  - PlatformDown
+  - FinalBoss
   layers:
   - Default
   - TransparentFX
@@ -42,9 +45,9 @@ TagManager:
   - Golem
   - Bridge
   - Tree
-  - 
-  - 
-  - 
+  - foot
+  - wraith
+  - dragon
   - 
   - 
   - 

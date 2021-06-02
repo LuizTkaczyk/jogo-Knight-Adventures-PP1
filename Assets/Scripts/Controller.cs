@@ -123,16 +123,11 @@ public class Controller : MonoBehaviour
         {
             PlayerLives -= lifeValue;
 
-            
-
-
             for (int i = 0; i < lifeValue; i++)
             {
                 Destroy(Lives.GetChild(i).gameObject);
                 
             }
-
-
         }
 
        if (Lives.childCount < 1)
@@ -182,7 +177,7 @@ public class Controller : MonoBehaviour
 
 
         Time.timeScale = Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(6);
         Destroy(menu);
 
 

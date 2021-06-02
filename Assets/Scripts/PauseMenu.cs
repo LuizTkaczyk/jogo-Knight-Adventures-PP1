@@ -11,21 +11,17 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject RestartMenu;
     public GameObject pausePrimeiroBtn;
-   // public GameObject canvas;
+    // public GameObject canvas;
     public bool isAlive;
 
-
-    //teste transiçao para o menu
-    public string levelName;
-    public Animator transicaoCena;
-
-    
+    //teste desbilitar teclado
+    public static bool inputEnable = true; // bool que verifica se os btns estão ativados ou não
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
-       
+
     }
 
     private void Awake()
@@ -39,70 +35,74 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
 
-           if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))  //ESc OU start do controle
-            { 
-       
-               PauseUnpause();
-                
-           }
-       
+        if (inputEnable)
+        {
+            if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))  //ESc OU start do controle
+            {
+
+                PauseUnpause();
+
+            }
+        }
+
+
     }
 
     public void PauseUnpause()
     {
 
-       
-            if (!pauseMenu.activeInHierarchy)
-             {
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
 
-             
+        if (!pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
 
-                EventSystem.current.SetSelectedGameObject(null); // limpando o botão selecionado pela unity por padrão
-                EventSystem.current.SetSelectedGameObject(pausePrimeiroBtn);
 
-            
-             }
-             else
-             {
-                pauseMenu.SetActive(false);
-                Time.timeScale = 1f;
-            
-             }
-        
 
-        
+            //EventSystem.current.SetSelectedGameObject(null); // limpando o botão selecionado pela unity por padrão
+            //EventSystem.current.SetSelectedGameObject(pausePrimeiroBtn);
+
+
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+
+        }
+
+
+
     }
 
     public void Restart()
     {
-        
+
         //EventSystem.current.SetSelectedGameObject(MenuReiniciar);
-        
+
         Destroy(Controller.current);
         RestartMenu.SetActive(false);
         Controller.current.StartGame();
-        
+
 
     }
 
     public void MenuRestart()
     {
-       
-       RestartMenu.SetActive(true);
-       
+
+        RestartMenu.SetActive(true);
+
 
 
     }
 
     public void Quit()
     {
-        
+
         SceneManager.LoadScene(0);
         pauseMenu.SetActive(false);
         //StartCoroutine(LoadLevel());
     }
 
-    
+
 }

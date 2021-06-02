@@ -7,8 +7,8 @@ public class Arrow : MonoBehaviour
     Rigidbody2D rig;
 
     //perseguir o player
-    float moveSpeed = 18f;
-    private Player target;
+    public float moveSpeed;
+    private GameObject target;
     Vector2 moveDirection;
     private Animator anim;
     public float elevationArrow;
@@ -18,7 +18,7 @@ public class Arrow : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();//codigos para o arqueiro perseguir o player
-        target = GameObject.FindObjectOfType<Player>();
+        target = GameObject.FindGameObjectWithTag("Player");
         moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
 
         if (target.GetComponent<Rigidbody2D>().velocity.x == 0) //pega a velocidade do player, caso maior que  0 o arqueiro acompanha e acerta, caso for 0 o arqueiro acerta do mesmo modo

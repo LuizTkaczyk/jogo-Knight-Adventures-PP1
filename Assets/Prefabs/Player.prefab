@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3428260112128703424}
   - component: {fileID: 3428260112128703425}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Point
   m_TagString: pointAtk
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 3428260112713214787}
   - component: {fileID: 3428260112713214786}
   - component: {fileID: 3428260112713214785}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d109abc8c196a3f468e7cc0cca7a13bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
   isPaused: 0
   Speed: 200
   isJumping: 0
@@ -183,7 +182,6 @@ MonoBehaviour:
   Axe: {fileID: 4731461345660819477, guid: e02773060c6217e4f94d5546fc50a743, type: 3}
   AxePitch: {fileID: 3428260113730599215}
   tpsLimite: 10
-  posInitial: {x: 0, y: 0}
 --- !u!50 &3428260112713214787
 Rigidbody2D:
   serializedVersion: 4
@@ -256,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3428260113730599216}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: AtackAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

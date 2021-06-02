@@ -27,7 +27,7 @@ public class NextLevelPoint : MonoBehaviour
         
         if (collision.gameObject.tag == "Player")
         {
-             
+            PauseMenu.inputEnable = false; 
             StartCoroutine("LoadLevel");
             StartCoroutine("Invencible");
         }

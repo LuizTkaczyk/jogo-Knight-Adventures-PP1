@@ -61,20 +61,17 @@ public class Golem3 : MonoBehaviour
                 Controller.current.RemoveLife(1); //perde uma vida
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f)); 
                 collision.gameObject.GetComponent<Player>().isVisible = true;
-
             }
         }
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
-            
             Speed = 0;
             anim.SetTrigger("die3");
             Destroy(gameObject, 2f);
 
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
-            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().simulated = false;
         }
     }
 }

@@ -107,7 +107,7 @@ MonoBehaviour:
   detectionArea: 3.77
   chaseMode: 1
   enemyJump: 0
-  playerDistance: 1.09
+  playerDistance: 0
   player: {fileID: 0}
 --- !u!61 &230825531482094226
 BoxCollider2D:
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011337221, y: -2.1723228}
+  m_Offset: {x: 0.0049684644, y: -1.6507013}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5641292, y: 1.656771}
+  m_Size: {x: 1.3359169, y: 2.7000136}
   m_EdgeRadius: 0
 --- !u!50 &230825531482094225
 Rigidbody2D:

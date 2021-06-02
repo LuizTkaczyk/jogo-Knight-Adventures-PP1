@@ -14,9 +14,9 @@ public class Catapult : MonoBehaviour
     private Vector3 catapultBallPosition;
     private bool isAtk;
     //timer da bola
-    private float tpsLimit = 10f;
-    private float timerBallCatapult = 0;
-    private float timerBall = 0.5f;
+    //private float tpsLimit = 10f;
+    //private float timerBallCatapult = 0;
+    private float timerBall =0f ;
     public float DistanceAtk;
     private float IntervalAtk = 2.5f;
     private float DistanceInterval;
@@ -31,24 +31,33 @@ public class Catapult : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Shoot()
-    {
-       
-        Instantiate(catapultBall, shotPoint.position, shotPoint.rotation);
-        
-        Audios.current.PlayMusic(Audios.current.arrow);
-
-       
-
-    }
-
-
     IEnumerator AtaqueBolaCatapulta()
     {
         yield return new WaitForSeconds(timerBall);
         Shoot();
 
     }
+
+    void Shoot()
+    {
+       
+        //Instantiate(catapultBall, shotPoint.position, shotPoint.rotation);
+        StartCoroutine(timerBallCat());
+        anim.SetTrigger("AtaqueCata");
+        //Audios.current.PlayMusic(Audios.current.arrow);
+
+    }
+
+    IEnumerator timerBallCat()
+    {
+        yield return new WaitForSeconds(0.50f);
+
+        Instantiate(catapultBall, shotPoint.position, shotPoint.rotation);
+
+    }
+
+
+
     void Update()
     {
         if (player != null)
@@ -57,8 +66,8 @@ public class Catapult : MonoBehaviour
 
             if (Distance > 0)
             {
-                transform.eulerAngles = new Vector2(0, 0); // direção que o arqueiro olha
-                catapultBallPosition = new Vector3(0.5f, -0.05f, 0); //posição que a flecha sai
+                transform.eulerAngles = new Vector2(0, 0);
+                catapultBallPosition = new Vector3(0.5f, -0.05f, 0); 
             }
             else
             {
@@ -69,15 +78,10 @@ public class Catapult : MonoBehaviour
 
             if (!isAtk && Mathf.Abs(Distance) <= DistanceAtk)
             {
-                timerBallCatapult =+ (timerBallCatapult / tpsLimit);
+               
                 StartCoroutine(AtaqueBolaCatapulta());
-                anim.SetTrigger("AtaqueCata");
-
-
                 isAtk = true;
             }
-
-
 
             if (isAtk)
             {

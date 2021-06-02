@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4828519067656084428}
   - component: {fileID: 1396797185}
   m_Layer: 0
-  m_Name: flecha
+  m_Name: Arrow
   m_TagString: Flecha
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c23e0cfae797c4c8b1d17ac6561793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevacaoFlecha: 1
+  moveSpeed: 40
+  elevationArrow: 1.23
 --- !u!58 &4828519067656084428
 CircleCollider2D:
   m_ObjectHideFlags: 0

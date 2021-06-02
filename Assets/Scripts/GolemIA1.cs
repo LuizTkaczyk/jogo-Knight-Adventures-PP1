@@ -9,7 +9,7 @@ public class GolemIA1 : MonoBehaviour
     public float velocity;
     private float horizontalMovement;
     private Animator anim;
-   
+
 
     public LayerMask allowedLayer;
     public Vector2 raycastOffset;
@@ -25,7 +25,7 @@ public class GolemIA1 : MonoBehaviour
     private bool isJump;
     public float enemyJump;
     public float playerDistance;
-  
+
     [SerializeField]
     GameObject player;
 
@@ -42,61 +42,62 @@ public class GolemIA1 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-      void FixedUpdate()
+    void FixedUpdate()
     {
-        
+
         Movimento(horizontalMovement * Time.fixedDeltaTime, false);
-       
-        
+
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        //segue o player
-        var diferencaPlayer = player.gameObject.transform.position.x - transform.position.x + playerDistance;
-        chasePlayer = Mathf.Abs(diferencaPlayer) < detectionArea;
-        
-        if(chaseMode && chasePlayer)
+
+        if (player.GetComponent<Player>().isAlive)
         {
-            if(diferencaPlayer < 0)
+            //segue o player
+            var diferencaPlayer = player.gameObject.transform.position.x - transform.position.x + playerDistance;
+            chasePlayer = Mathf.Abs(diferencaPlayer) < detectionArea;
+
+            if (chaseMode && chasePlayer)
             {
-                walkRight = -1;
+                if (diferencaPlayer < 0)
+                {
+                    walkRight = -1;
+
+                }
+                else
+                {
+                    walkRight = 1;
+
+                }
             }
-            else
-            {
-                walkRight = 1;
-            }
+
+
         }
-
-
 
         //movimento do inimigo
         horizontalMovement = walkRight * velocity;
 
 
-        
+
         var inicioX = transform.position.x + raycastOffset.x;
         var inicioY = transform.position.y + raycastOffset.y;
-        
-        
+
+
         //detecta a parede da direita e volta
         var raycastParedeDireita = Physics2D.Raycast(new Vector2(inicioX, inicioY), Vector2.right, 0.5f, allowedLayer);
         Debug.DrawRay(new Vector2(transform.position.x, inicioY), Vector2.right, Color.blue);
-        if(raycastParedeDireita.collider != null)
+        if (raycastParedeDireita.collider != null)
         {
             if (!chasePlayer)
             {
+
                 walkRight = -1;
             }
-            else
-            {
-                Pula();
-            }
-
-          
-          
+            
         }
 
         //detecta a parede da esquerda e volta
@@ -109,18 +110,13 @@ public class GolemIA1 : MonoBehaviour
             {
                 walkRight = 1;
             }
-            else
-            {
-                Pula();
-            }
-           
            
         }
 
         //detecta se não tem chão na direita e volta
         var raycastChaoDireita = Physics2D.Raycast(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down, 1f, allowedLayer);
         Debug.DrawRay(new Vector2(transform.position.x + raycastOffset.x, transform.position.y), Vector2.down, Color.red);
-        if(raycastChaoDireita.collider == null)
+        if (raycastChaoDireita.collider == null)
         {
             walkRight = -1;
 
@@ -131,36 +127,27 @@ public class GolemIA1 : MonoBehaviour
         Debug.DrawRay(new Vector2(transform.position.x - raycastOffset.x, transform.position.y), Vector2.down, Color.red);
         if (raycastChaoEsquerda.collider == null)
         {
-             walkRight = 1;
-            
+            walkRight = 1;
+
         }
 
     }
 
-    void Pula()
-    {
-        
 
-        rig.AddForce(Vector2.up * enemyJump);
-        anim.SetTrigger("pula");
-        
-        
-    }
 
-  
 
     public void Movimento(float qtdMovimento, bool pulando)
     {
-        
+
         if (onTheFloor || airControl)
         {
             AplicaMovimento(qtdMovimento);
             DetectaGirar(qtdMovimento);
         }
-      
+
     }
 
-    
+
     private void AplicaMovimento(float qtdMovimento)
     {
         // Encontra a velocidade do jogador

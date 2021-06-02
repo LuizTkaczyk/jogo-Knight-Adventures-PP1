@@ -66,7 +66,6 @@ public class Golem2 : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
             Speed = 0;
             anim.SetTrigger("die2");
             Destroy(gameObject,2f);

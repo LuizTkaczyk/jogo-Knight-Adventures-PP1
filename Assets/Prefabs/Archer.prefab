@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 133391289}
   - component: {fileID: 133391290}
   m_Layer: 0
-  m_Name: arqueiro
+  m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,12 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 2156186893275779965, guid: 0aa2cc61b2b918f42ab5c5948920cdcb, type: 3}
-  lauchForce: 13
   shotPoint: {fileID: 6364766428407179447}
-  tpsLimite: 10
-  tempoFlecha: 0.8
   DistanciaAtaque: 10
-  IntervaloAtaque: 2.7
+  IntervaloAtaque: 1.5
 --- !u!58 &133391289
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6364766428407179446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.21, y: -0.67, z: -3.4578838}
+  m_LocalPosition: {x: 3.63, y: -1.16, z: -3.4578838}
   m_LocalScale: {x: 4.773511, y: 4.9661393, z: 1}
   m_Children: []
   m_Father: {fileID: 6364766427673620545}

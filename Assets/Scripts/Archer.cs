@@ -4,22 +4,19 @@ using UnityEngine;
 public class Archer : MonoBehaviour
 {
     public GameObject arrow;
-    //public float lauchForce;
+   
     public Transform shotPoint;
 
-
-    //private GameObject flechaCriada;
     private GameObject player;
     private Animator anim;
     private Vector3 posFlecha;
     private bool isAtk;
-    //timer da flechas
-    public float tpsLimite = 10f;
-    private float timerFlecha = 0;
-    public float tempoFlecha;
+    
     public float DistanciaAtaque;
     public float IntervaloAtaque;
     private float IntervaloDistancia;
+
+    //public float tempoFecha;
 
 
     void Start()
@@ -30,18 +27,37 @@ public class Archer : MonoBehaviour
 
     }
 
+    IEnumerator AtaqueFlecha()
+    {
+        yield return new WaitForSeconds(IntervaloAtaque);
+        
+        Shoot();
+
+    }
+
     void Shoot()
     {
-        Instantiate(arrow, shotPoint.position, shotPoint.rotation);
-        Audios.current.PlayMusic(Audios.current.arrow);
+        StartCoroutine(timerArrow());
+        StartCoroutine(soundTimer());
+        anim.SetTrigger("Ataque");
+        //Audios.current.PlayMusic(Audios.current.arrow);
     }
 
 
-    IEnumerator AtaqueFlecha()
-    {
-        yield return new WaitForSeconds(tempoFlecha);
-        Shoot();
+    
 
+    IEnumerator timerArrow()
+    {
+        yield return new WaitForSeconds(0.69f);
+       
+        Instantiate(arrow, shotPoint.position, shotPoint.rotation);
+
+    }
+
+    IEnumerator soundTimer()
+    {
+        yield return new WaitForSeconds(0.40f);
+        Audios.current.PlayMusic(Audios.current.arrow);
     }
 
     private void Update()
@@ -64,9 +80,9 @@ public class Archer : MonoBehaviour
 
             if (!isAtk && Mathf.Abs(Distance) <= DistanciaAtaque)
             {
-                timerFlecha = 6f / tpsLimite;
+                //timerFlecha = 6f / tpsLimite;
                 StartCoroutine(AtaqueFlecha());
-                anim.SetTrigger("Ataque");
+                
 
 
                 isAtk = true;
