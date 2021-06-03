@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Cam : MonoBehaviour
 {
-    
+
     private GameObject player;
     public float Speed;
     public float positionCam;
@@ -20,15 +20,15 @@ public class Cam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player != null ) {
+        if (player != null)
+        {
 
             if (player.transform.position.x > positionCam)
             {
-                Vector3 newPos = new Vector3(player.transform.position.x +positionPlayer, transform.position.y, transform.position.z);
+                Vector3 newPos = new Vector3(player.transform.position.x + positionPlayer, transform.position.y, transform.position.z);
                 transform.position = Vector3.Lerp(transform.position, newPos, Speed * Time.deltaTime);//lerp é um movimento suave
             }
 
-       
-        } 
+        }
     }
 }

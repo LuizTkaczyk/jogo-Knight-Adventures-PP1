@@ -16,19 +16,15 @@ public class UiButtonsJump : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("outJump");
-       
-    }
 
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-     
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine(timerUi());
-          
+
         }
     }
-
-    
 }

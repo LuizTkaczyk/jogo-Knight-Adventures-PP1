@@ -30,7 +30,7 @@ public class Wraith : MonoBehaviour
     GameObject player;
 
     public GameObject magicBall;
-    Vector3 firePos ;
+    Vector3 firePos;
     private bool isAtk;
     public float AtkInterval; //intervalo de ataque do dragão
     public float AtkDistance; //distancia em que  dragão vai atacar o player
@@ -65,7 +65,7 @@ public class Wraith : MonoBehaviour
             anim.SetTrigger("atk");
             Instantiate(magicBall, transform.position + firePos, transform.rotation);
             Audios.current.PlayMusic(Audios.current.fireBall);
-           
+
             isAtk = true;
 
         }
@@ -81,10 +81,6 @@ public class Wraith : MonoBehaviour
         }
     }
 
-    
-
-
-
     // Update is called once per frame
     void Update()
     {
@@ -99,33 +95,21 @@ public class Wraith : MonoBehaviour
             {
                 if (diferencaPlayer < 0)
                 {
-                    //scrolledToRight = false;
                     walkRight = -1;
                     GiraJogador(180);
                     attack(new Vector3(-0.5f, 0, 0));
-                    
-
                 }
                 else
                 {
-                    //scrolledToRight = true;
                     walkRight = 1;
                     GiraJogador(0);
                     attack(new Vector3(0.5f, 0, 0));
-                    
                 }
-
-
             }
-            
-
         }
 
         //movimento do inimigo
         horizontalMovement = walkRight * velocity;
-
-
-
         var inicioX = transform.position.x + raycastOffset.x;
         var inicioY = transform.position.y + raycastOffset.y;
 
@@ -181,11 +165,8 @@ public class Wraith : MonoBehaviour
 
     public void Movimento(float qtdMovimento)
     {
-
         AplicaMovimento(qtdMovimento);
         DetectaGirar(qtdMovimento);
-
-
     }
 
 
@@ -251,17 +232,12 @@ public class Wraith : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
-            
             anim.SetTrigger("die");
             velocity = 0;
             Destroy(this);
-            Destroy(gameObject,2f);
-
+            Destroy(gameObject, 2f);
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
-
-
         }
     }
 }

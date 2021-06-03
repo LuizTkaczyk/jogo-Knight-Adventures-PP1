@@ -53,8 +53,6 @@ public class Golem2 : MonoBehaviour
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
             anim.SetTrigger("atk2");
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
@@ -68,12 +66,9 @@ public class Golem2 : MonoBehaviour
         {
             Speed = 0;
             anim.SetTrigger("die2");
-            Destroy(gameObject,2f);
-
+            Destroy(gameObject, 2f);
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;
-
-
         }
     }
 }

@@ -14,21 +14,18 @@ public class Troll1 : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        //groundCheck = gameObject.GetComponent<Transform>();
     }
 
     private void Update()
     {
-        //PlayerDetect();
-        EnemyMovement();
 
+        EnemyMovement();
     }
 
     void EnemyMovement()
     {
-        //Debug.Log("movimento");
-        anim.SetTrigger("walk");
 
+        anim.SetTrigger("walk");
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         RaycastHit2D ground = Physics2D.Raycast(groundCheck.position, Vector2.down, distance);
 
@@ -42,14 +39,12 @@ public class Troll1 : MonoBehaviour
             }
             else
             {
-                
+
                 transform.eulerAngles = new Vector3(0, 180, 0);
                 isRight = true;
 
             }
         }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,8 +52,6 @@ public class Troll1 : MonoBehaviour
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
             anim.SetTrigger("attack");
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
@@ -70,18 +63,12 @@ public class Troll1 : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado 
         {
-
-
             speed = 0;
             anim.SetTrigger("die");
-            //Destroy(gameObject, 2f);
-            //GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;
-
-
         }
 
-        if(collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 10)
         {
             speed = 0;
             anim.SetTrigger("die");

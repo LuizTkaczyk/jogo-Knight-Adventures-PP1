@@ -29,24 +29,19 @@ public class MagicBall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
             anim.SetTrigger("magicBall");
             anim.GetComponent<CircleCollider2D>().enabled = false; // o colisor é desativado, assim a fumaça não tira dano
             player.GetComponent<Animator>().SetTrigger("Dano");
-
             Speed = 1f;
 
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-
                 Controller.current.RemoveLife(1);
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
-                //collision.gameObject.transform.Translate(-Vector2.right * 0.5f);
-
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
 
-            
+
         }
     }
 }

@@ -29,10 +29,6 @@ public class GolemIA1 : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,10 +40,7 @@ public class GolemIA1 : MonoBehaviour
 
     void FixedUpdate()
     {
-
         Movimento(horizontalMovement * Time.fixedDeltaTime, false);
-
-
     }
 
 
@@ -74,8 +67,6 @@ public class GolemIA1 : MonoBehaviour
 
                 }
             }
-
-
         }
 
         //movimento do inimigo
@@ -97,7 +88,7 @@ public class GolemIA1 : MonoBehaviour
 
                 walkRight = -1;
             }
-            
+
         }
 
         //detecta a parede da esquerda e volta
@@ -110,7 +101,7 @@ public class GolemIA1 : MonoBehaviour
             {
                 walkRight = 1;
             }
-           
+
         }
 
         //detecta se não tem chão na direita e volta
@@ -214,17 +205,11 @@ public class GolemIA1 : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
-
             anim.SetTrigger("morre");
             velocity = 0;
-
             Destroy(gameObject, 2f);
-
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
-
-
         }
     }
 

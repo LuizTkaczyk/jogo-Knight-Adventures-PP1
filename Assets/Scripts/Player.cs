@@ -9,41 +9,23 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rig;
     private Animator anim;
-
-
-    //public GameObject pauseMenu;
     public bool isPaused;
-
     public float Speed;
-
     public bool isJumping;
     public bool DoubleJump;
     public float JumpForce;
-
-
     public bool isAtack; //verifica se esta atacando
-
     private float timeAtk;
-
     public GameObject point; // esse é a referencia ao machado do player
-
     public SpriteRenderer SpriteRend;
-
     private float visibleTime = 1.4f; //tempo em que o player fica invisivel ao receber um dano
     public bool isVisible;
     private float visibleCount;
-
     public bool isAlive;
-
-    //controles mobile
-    public bool isRight;
-    public bool isLeft;
-    public bool isAtk;
 
     //Machado arremessado
     public GameObject Axe;
-    Vector3 PosMachado;
-
+    private Vector3 PosMachado;
     public GameObject AxePitch;
 
     //timer do machado 
@@ -54,19 +36,11 @@ public class Player : MonoBehaviour
     //posição inicial do player
     private Vector2 posInitial;
 
-    //respaw  player
-    //public Checkpoint spawnCheck;
     private GameControllerCheck gcc;
-
-
-
-
 
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
     void Start()
     {
-
-
         //determina a posição no inicio do jogo
         posInitial = new Vector2(-12.89f, -1.37f);
         transform.position = posInitial;
@@ -75,18 +49,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
 
-        //fireball = GameObject.FindGameObjectWithTag("fireball");
-
-
     }
-
-
-
 
     IEnumerator AtaqueMachado()
     {
         yield return new WaitForSeconds(0.4f);
-        //Instantiate(Machado, transform.position + PosMachado, transform.rotation);
         Instantiate(Axe, AxePitch.transform.position, transform.rotation);
 
     }
@@ -95,22 +62,17 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
 
-        //if (inputEnable)
-        //{
-        //    if (Input.GetKey(KeyCode.H))
-        //    {
-        //        Debug.Log("Apertou");
-        //    }
-        //}
+        Movements();
 
 
+    }
+
+    private void Movements()
+    {
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
         if (isAlive == true)
         {
 
-
-
-            // if (Input.GetKey(KeyCode.D))
             //controles Xbox
             if ((Input.GetAxisRaw("HorizontalJoystick") > 0) || Input.GetKey(KeyCode.D)) //vira/vai pra direita , com o teclado
 
@@ -119,8 +81,6 @@ public class Player : MonoBehaviour
                 anim.SetBool("isWalking", true); // ativa a animação de andar
                 transform.localEulerAngles = new Vector3(0, 0, 0); //deixa o player virado para a direita ao pressionar para a direita
                 PosMachado = new Vector3(0.500f, 0.680f, 0); //Posição do machado
-
-
 
             }
 
@@ -168,7 +128,6 @@ public class Player : MonoBehaviour
                     }
                 }
 
-
             }
 
 
@@ -201,10 +160,6 @@ public class Player : MonoBehaviour
 
             }
 
-
-
-
-
             if (isVisible == true) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
             {
 
@@ -219,9 +174,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -246,9 +198,6 @@ public class Player : MonoBehaviour
             //Destroy(collision.gameObject);
         }
 
-
-
-
         if (collision.gameObject.layer == 10)
 
         {
@@ -259,15 +208,10 @@ public class Player : MonoBehaviour
 
 
         }
-
-
     }
-
-
 
     public IEnumerator PlayerDemage(float DemageTime)
     {
-
         for (int i = 0; i < 15; i++)
         {
             SpriteRend.color = Color.red;
@@ -278,8 +222,6 @@ public class Player : MonoBehaviour
 
         }
 
-
     }
-
 
 }

@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TranLevel5.unity
     guid: b0bfde876d3905f458171e408eb86bca
+  - enabled: 1
+    path: Assets/Scenes/Config.unity
+    guid: 057e6731db980234d9d2492f9d281dec
   m_configObjects: {}

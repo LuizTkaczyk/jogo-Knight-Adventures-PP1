@@ -24,13 +24,6 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-
-
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -39,13 +32,9 @@ public class PauseMenu : MonoBehaviour
         {
             if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))  //ESc OU start do controle
             {
-
                 PauseUnpause();
-
             }
         }
-
-
     }
 
     public void PauseUnpause()
@@ -56,53 +45,43 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
-
-
-
-            //EventSystem.current.SetSelectedGameObject(null); // limpando o botão selecionado pela unity por padrão
-            //EventSystem.current.SetSelectedGameObject(pausePrimeiroBtn);
-
-
         }
         else
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-
         }
-
-
-
     }
+
+    public void optionsMenuOff()
+    {
+        inputEnable = false;
+    }
+    public void optionsMenuOn()
+    {
+        inputEnable = true;
+    }
+
+
 
     public void Restart()
     {
-
-        //EventSystem.current.SetSelectedGameObject(MenuReiniciar);
-
         Destroy(Controller.current);
         RestartMenu.SetActive(false);
         Controller.current.StartGame();
-
-
     }
 
     public void MenuRestart()
     {
-
         RestartMenu.SetActive(true);
-
-
 
     }
 
     public void Quit()
     {
-
         SceneManager.LoadScene(0);
         pauseMenu.SetActive(false);
-        //StartCoroutine(LoadLevel());
-    }
 
+    }
 
 }

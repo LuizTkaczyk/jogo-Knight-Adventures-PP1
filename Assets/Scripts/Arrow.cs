@@ -66,11 +66,7 @@ public class Arrow : MonoBehaviour
 
 
             }
-
-
         }
-
-       
 
     }
 }

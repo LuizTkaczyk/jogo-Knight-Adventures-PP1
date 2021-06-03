@@ -16,17 +16,14 @@ public class UIAtkButton : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("outAtk");
-
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine(timerUi());
-
         }
     }
 }

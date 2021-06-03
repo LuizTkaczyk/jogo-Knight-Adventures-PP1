@@ -65,11 +65,7 @@ public class FinalBoss : MonoBehaviour
 
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-
-                //Debug.Log("encostou");
-
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-
                 Controller.current.RemoveLife(1); //perde uma vida
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
@@ -80,7 +76,6 @@ public class FinalBoss : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
             anim.SetTrigger("hurt");
             TakeDemage(10);
 
@@ -88,7 +83,7 @@ public class FinalBoss : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 this.GetComponent<Rigidbody2D>().simulated = false;
-                //Destroy(gameObject, 5f);
+
             }
 
 
@@ -101,10 +96,5 @@ public class FinalBoss : MonoBehaviour
             TakeDemage(10);
 
         }
-
-
-
     }
-
-
 }

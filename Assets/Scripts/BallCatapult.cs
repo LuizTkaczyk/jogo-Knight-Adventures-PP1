@@ -18,9 +18,9 @@ public class BallCatapult : MonoBehaviour
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();//codigos perseguir o player
         target = GameObject.FindObjectOfType<Player>();
-       
+
         moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
-        rig.velocity = new Vector2(moveDirection.x , moveDirection.y + 4);//ate aqui
+        rig.velocity = new Vector2(moveDirection.x, moveDirection.y + 4);//ate aqui
         Destroy(gameObject, 3f);
 
     }
@@ -29,7 +29,7 @@ public class BallCatapult : MonoBehaviour
     {
         float angle = Mathf.Atan2(rig.velocity.y, rig.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
+
     }
 
 
@@ -47,21 +47,17 @@ public class BallCatapult : MonoBehaviour
 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.040f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
-                
 
             }
 
-            
         }
 
-        if(collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8)
         {
             rig.simulated = false;
             anim.SetTrigger("bolaExplo");
             Destroy(gameObject, 0.25f);
         }
-
-
 
     }
 }

@@ -5,11 +5,8 @@ using UnityEngine;
 public class Golem3 : MonoBehaviour
 {
     public float Speed; //define a velocidade do inimigo
-
     public bool Direction;//define as direções do inimigo
     public float DurationDirection;// define o tempo em que o inimigo andara em cada direção
-
-
     private Animator anim;
     private float TimeDirection;
 
@@ -53,13 +50,11 @@ public class Golem3 : MonoBehaviour
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
             anim.SetTrigger("atk3");
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
                 Controller.current.RemoveLife(1); //perde uma vida
-                StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f)); 
+                StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
         }
@@ -69,7 +64,6 @@ public class Golem3 : MonoBehaviour
             Speed = 0;
             anim.SetTrigger("die3");
             Destroy(gameObject, 2f);
-
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;
         }

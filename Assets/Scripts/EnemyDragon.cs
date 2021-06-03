@@ -13,18 +13,16 @@ public class EnemyDragon : MonoBehaviour
     public GameObject FireBall; // bola de fogo lançada pelo dragão
 
     private Animator anim;//chama o animator
-    private GameObject player; //chama o animator
-
+    private GameObject player;
+    Vector3 firePos; // o fogo do dragão sai um pouco a fremte da boca
+   
+    
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>(); //chama o animator
-        player = GameObject.FindGameObjectWithTag("Player"); // chama o player pela tag
+        anim = GetComponent<Animator>(); 
+        player = GameObject.FindGameObjectWithTag("Player"); 
     }
-
-    // Update is called once per frame
-
-    Vector3 firePos; // o fogo do dragão sai um pouco a fremte da boca
 
     void Update()
     {
@@ -71,17 +69,13 @@ public class EnemyDragon : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
-           
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                //collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
                 Controller.current.RemoveLife(1); //perde uma vida
-
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
-                
+
             }
         }
 
@@ -89,8 +83,6 @@ public class EnemyDragon : MonoBehaviour
         if (collision.gameObject.layer == 9) //layer do machado !
         {
             GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
-
-
             anim.SetTrigger("die");
             Destroy(this);
             Destroy(gameObject, 0.7f);

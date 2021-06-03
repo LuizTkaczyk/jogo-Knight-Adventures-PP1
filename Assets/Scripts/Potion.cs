@@ -28,14 +28,12 @@ public class Potion : MonoBehaviour
         {
             takeLifes();
             animLife.GetComponent<Animator>().SetTrigger("takePotion");
-
             Audios.current.PlayMusic(Audios.current.potion);
             Controller.current.AddLife(LifeValue);
             sprite.enabled = false;
             colliders.enabled = false;
             Destroy(gameObject,3f);
-
-            
+ 
         }
     }
 }

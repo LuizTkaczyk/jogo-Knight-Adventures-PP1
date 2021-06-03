@@ -16,9 +16,6 @@ public class Archer : MonoBehaviour
     public float IntervaloAtaque;
     private float IntervaloDistancia;
 
-    //public float tempoFecha;
-
-
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,7 +37,7 @@ public class Archer : MonoBehaviour
         StartCoroutine(timerArrow());
         StartCoroutine(soundTimer());
         anim.SetTrigger("Ataque");
-        //Audios.current.PlayMusic(Audios.current.arrow);
+       
     }
 
 
@@ -80,11 +77,8 @@ public class Archer : MonoBehaviour
 
             if (!isAtk && Mathf.Abs(Distance) <= DistanciaAtaque)
             {
-                //timerFlecha = 6f / tpsLimite;
-                StartCoroutine(AtaqueFlecha());
                 
-
-
+                StartCoroutine(AtaqueFlecha());
                 isAtk = true;
             }
 
@@ -108,9 +102,8 @@ public class Archer : MonoBehaviour
         {
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                //collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
+                
                 Controller.current.RemoveLife(1); //perde uma vida
-
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }

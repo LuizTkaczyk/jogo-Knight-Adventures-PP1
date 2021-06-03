@@ -81,14 +81,9 @@ public class Wraith2 : MonoBehaviour
         }
     }
 
-
-
-
-
     // Update is called once per frame
     void Update()
     {
-
         if (player.GetComponent<Player>().isAlive)
         {
             //segue o player
@@ -99,16 +94,14 @@ public class Wraith2 : MonoBehaviour
             {
                 if (diferencaPlayer < 0)
                 {
-                    Debug.Log("entrou");
+
                     walkRight = -1;
                     GiraJogador(180);
                     attack(new Vector3(-0.5f, 0, 0));
 
-
                 }
                 else
                 {
-                    //scrolledToRight = true;
                     walkRight = 1;
                     GiraJogador(0);
                     attack(new Vector3(0.5f, 0, 0));
@@ -122,9 +115,6 @@ public class Wraith2 : MonoBehaviour
 
         //movimento do inimigo
         horizontalMovement = walkRight * velocity;
-
-
-
         var inicioX = transform.position.x + raycastOffset.x;
         var inicioY = transform.position.y + raycastOffset.y;
 
@@ -180,11 +170,8 @@ public class Wraith2 : MonoBehaviour
 
     public void Movimento(float qtdMovimento)
     {
-
         AplicaMovimento(qtdMovimento);
         DetectaGirar(qtdMovimento);
-
-
     }
 
 
@@ -195,7 +182,6 @@ public class Wraith2 : MonoBehaviour
         // Suavizando a velocidade de movimento
         Vector3 velocity = Vector3.zero;
         rig.velocity = Vector3.SmoothDamp(rig.velocity, velocidadeJogador, ref velocity, smoothingMovement);
-        //anim.SetTrigger("anda");
     }
 
 
@@ -235,10 +221,6 @@ public class Wraith2 : MonoBehaviour
 
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
-          
-
-            Debug.Log("acertou");
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
@@ -250,18 +232,12 @@ public class Wraith2 : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //layer do machado !
         {
-
-
             anim.SetTrigger("die");
             velocity = 0;
-
             Destroy(this);
             Destroy(gameObject, 2f);
-
             GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
-
-
         }
     }
 }

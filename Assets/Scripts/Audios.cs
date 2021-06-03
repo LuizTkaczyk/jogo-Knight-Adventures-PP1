@@ -16,9 +16,6 @@ public class Audios : MonoBehaviour
     public AudioClip deathArcher;
     public AudioClip cataExplosion;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {

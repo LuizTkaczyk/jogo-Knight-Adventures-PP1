@@ -6,11 +6,8 @@ public class Golem1 : MonoBehaviour
 {
 
     public float Speed; //define a velocidade do inimigo
-  
     public bool Direction;//define as direções do inimigo
     public float DurationDirection;// define o tempo em que o inimigo andara em cada direção
-
-
     private Animator anim;
     private float TimeDirection;
     //public float DetectionArea;
@@ -20,8 +17,6 @@ public class Golem1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
         anim = GetComponent<Animator>();
     }
 
@@ -30,8 +25,7 @@ public class Golem1 : MonoBehaviour
 
     void Update() // cofigura se o inimigo vai para a esquerda ou direita
     {
-         movimentoGolem();
-       
+        movimentoGolem();
     }
 
     void movimentoGolem()
@@ -63,8 +57,6 @@ public class Golem1 : MonoBehaviour
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
             anim.SetTrigger("atk1");
-
-
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
@@ -73,18 +65,13 @@ public class Golem1 : MonoBehaviour
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
         }
-         
-        if (collision.gameObject.layer ==  9) //layer do machado !
-        {
 
-           
+        if (collision.gameObject.layer == 9) //layer do machado !
+        {
             Speed = 0;
             anim.SetTrigger("die");
             Destroy(gameObject, 2f);
-            //GetComponent<CircleCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;
-
-
         }
     }
 
