@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Bits: 41216
   raycastOffset: {x: 0.44, y: -0.46}
   jumpForce: 10
-  detectionArea: 3.77
+  detectionArea: 1.86
   chaseMode: 1
   enemyJump: 0
   playerDistance: 0
@@ -188,6 +188,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.42004088}
+  m_Offset: {x: 0, y: -0.8118203}
   serializedVersion: 2
-  m_Radius: 1.2924128
+  m_Radius: 2.5242739

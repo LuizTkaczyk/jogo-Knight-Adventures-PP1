@@ -177,7 +177,7 @@ public class Wraith : MonoBehaviour
         // Suavizando a velocidade de movimento
         Vector3 velocity = Vector3.zero;
         rig.velocity = Vector3.SmoothDamp(rig.velocity, velocidadeJogador, ref velocity, smoothingMovement);
-        anim.SetTrigger("anda");
+        //anim.SetTrigger("anda");
     }
 
 
@@ -217,9 +217,6 @@ public class Wraith : MonoBehaviour
 
         if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
         {
-            anim.SetTrigger("ataca");
-
-            Debug.Log("acertou");
 
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {

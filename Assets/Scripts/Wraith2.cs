@@ -62,7 +62,7 @@ public class Wraith2 : MonoBehaviour
     {
         if (!isAtk && Mathf.Abs(detectionArea) <= AtkDistance)
         {
-            anim.SetTrigger("atk");
+
             Instantiate(magicBall, transform.position + firePos, transform.rotation);
             Audios.current.PlayMusic(Audios.current.fireBall);
 

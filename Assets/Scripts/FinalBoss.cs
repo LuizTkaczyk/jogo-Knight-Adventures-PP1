@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class FinalBoss : MonoBehaviour
     private GameObject playerP;
 
     public bool isFlipped = false;
+
+    public Animator SceneTransition;
 
     private void Start()
     {
@@ -84,6 +87,9 @@ public class FinalBoss : MonoBehaviour
                 anim.SetTrigger("die");
                 this.GetComponent<Rigidbody2D>().simulated = false;
 
+                StartCoroutine(FinalScene());
+                
+
             }
 
 
@@ -94,6 +100,23 @@ public class FinalBoss : MonoBehaviour
             Debug.Log("cabeça");
             anim.SetTrigger("hurt");
             TakeDemage(10);
+
+        }
+
+        IEnumerator FinalScene()
+        {
+           
+            yield return new WaitForSeconds(2f);
+            SceneTransition.SetTrigger("Start");
+            StartCoroutine(end());
+           
+        }
+
+        IEnumerator end()
+        {
+            yield return new WaitForSeconds(5f); 
+            SceneManager.LoadScene(12);
+
 
         }
     }

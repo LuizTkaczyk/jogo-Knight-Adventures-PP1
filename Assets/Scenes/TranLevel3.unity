@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level3
   SceneTransition: {fileID: 1942356761}
+  timeTransition: 3
 --- !u!114 &196875568
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
     void Start()
     {
+        
         //determina a posição no inicio do jogo
         posInitial = new Vector2(-12.89f, -1.37f);
         transform.position = posInitial;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         Instantiate(Axe, AxePitch.transform.position, transform.rotation);
+        
 
     }
 
@@ -201,7 +203,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 10)
 
         {
-
+            
             Controller.current.RemoveLife(1);
             gcc = GameObject.FindGameObjectWithTag("GC").GetComponent<GameControllerCheck>();
             transform.position = gcc.LastCheckpoint;

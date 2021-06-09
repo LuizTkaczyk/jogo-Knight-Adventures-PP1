@@ -21,6 +21,7 @@ public class Controller : MonoBehaviour
     private GameObject golom;
     private GameObject dragon;
     private GameObject menu;
+    private GameObject bgm;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class Controller : MonoBehaviour
 
 
         current = this;
+        bgm = GameObject.FindGameObjectWithTag("bgmMenu");
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player"); //faz referencia ao player na classe controller
         golom = GameObject.FindGameObjectWithTag("Golom"); //faz referencia ao Golom na classe controller
@@ -96,7 +98,9 @@ public class Controller : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = Time.timeScale = 1;
+
         SceneManager.LoadScene(6);
+        Destroy(bgm);
         Destroy(menu);
     }
 

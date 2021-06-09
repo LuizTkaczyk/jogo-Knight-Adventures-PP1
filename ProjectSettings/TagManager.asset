@@ -26,6 +26,7 @@ TagManager:
   - foot
   - PlatformDown
   - FinalBoss
+  - bgmMenu
   layers:
   - Default
   - TransparentFX
@@ -48,7 +49,7 @@ TagManager:
   - foot
   - wraith
   - dragon
-  - 
+  - catpult
   - 
   - 
   - 

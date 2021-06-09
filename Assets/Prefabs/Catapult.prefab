@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5914466159444395351}
   - component: {fileID: 649384738}
   - component: {fileID: 1148106465}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Catapult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   catapultBall: {fileID: 2848672775388689638, guid: 65d411ffbd88af14a871eae98355897f,
     type: 3}
   shotPoint: {fileID: 5914466159753533068}
-  DistanceAtk: 10
+  DistanceAtk: 15
 --- !u!61 &5914466159444395351
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5914466159753533068}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: shotPointCata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
