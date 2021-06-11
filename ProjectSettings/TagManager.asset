@@ -27,6 +27,10 @@ TagManager:
   - PlatformDown
   - FinalBoss
   - bgmMenu
+  - Laser
+  - Enemy
+  - Villager
+  - Villager2
   layers:
   - Default
   - TransparentFX

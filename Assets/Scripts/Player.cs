@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Flowchart = Fungus.Flowchart;
 
 
 public class Player : MonoBehaviour
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     public bool isVisible;
     private float visibleCount;
     public bool isAlive;
+    public bool movements;
 
     //Machado arremessado
     public GameObject Axe;
@@ -38,36 +40,91 @@ public class Player : MonoBehaviour
 
     private GameControllerCheck gcc;
 
+    //Caixa de diálogo
+    public Flowchart fungus;
+    //public GameObject[] uiElements;
+    public static int exeOneTime = 0;
+    public GameObject villager;
+    private WaitForSeconds time;
+
+    public static bool inputEnable = true;
+    public static bool inputMove = true;
+
     //Configurações do player, como andar para as devidas direções, animação de andar, de virar pra trás
     void Start()
     {
-        
+
         //determina a posição no inicio do jogo
-        posInitial = new Vector2(-12.89f, -1.37f);
+        posInitial = new Vector2(-14.89f, -1.37f);
         transform.position = posInitial;
 
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
 
+        villager = GameObject.FindGameObjectWithTag("Villager");
+       
+        time = new WaitForSeconds(2.5f);
     }
 
     IEnumerator AtaqueMachado()
     {
         yield return new WaitForSeconds(0.4f);
         Instantiate(Axe, AxePitch.transform.position, transform.rotation);
-        
+
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
         Movements();
+        Dialog();
+    }
+
+    private void Update()
+    {
 
 
     }
+
+    void Dialog()
+    {
+
+        if (exeOneTime == 0)
+        {
+            if (Vector2.Distance(transform.position, villager.transform.position) < 2f)
+            {
+                inputEnable = false;
+                isJumping = true;
+                Speed = 0;
+                fungus.ExecuteBlock("Start");
+                villager.GetComponent<Animator>().SetBool("talk", true);
+
+            }
+
+        }
+    }
+
+
+
+    public void CloseDialog()
+    {
+        inputEnable = true;
+        isJumping = false;
+        exeOneTime = 1;
+        Speed = 200;
+        villager.GetComponent<Animator>().SetBool("talk", false);
+        StartCoroutine(VillageDialog());
+
+    }
+
+    IEnumerator VillageDialog()
+    {
+        yield return new WaitForSeconds(5f);
+        exeOneTime = 0;
+    }
+
 
     private void Movements()
     {
@@ -133,48 +190,54 @@ public class Player : MonoBehaviour
             }
 
 
-            if (timerAxe > 0)
+            if (inputEnable)
             {
-                timerAxe -= Time.deltaTime;
-            }
-            else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
-
-            {
-                timerAxe = 5f / tpsLimite;
-
-                Audios.current.PlayMusic(Audios.current.atkSfx);
-                anim.SetBool("isAtk", true);
-                anim.SetBool("animMachado", true);
-                timeAtk = 0.50f;
-
-                StartCoroutine(AtaqueMachado());
-                isAtack = true;
-
-            }
-
-            timeAtk -= Time.deltaTime; //ativado tanto nos comandos mobile quanto pc
-
-            if (timeAtk <= 0f)
-            {
-                anim.SetBool("isAtk", false); // codigo de ataque
-                isAtack = false;
-                point.SetActive(false);
-
-            }
-
-            if (isVisible == true) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
-            {
-
-                visibleCount += Time.deltaTime;
-                if (visibleCount >= visibleTime)
+                if (timerAxe > 0)
                 {
-                    //Debug.Log("acertou");
-                    visibleCount = 0;
-                    isVisible = false;
-                    this.GetComponent<SpriteRenderer>().color = Color.white;
+                    timerAxe -= Time.deltaTime;
+                }
+                else if ((Input.GetButtonDown("AtackJoystick") || Input.GetKeyDown(KeyCode.K))) //codigo de ataque
+
+                {
+                    timerAxe = 5f / tpsLimite;
+
+                    Audios.current.PlayMusic(Audios.current.atkSfx);
+                    anim.SetBool("isAtk", true);
+                    anim.SetBool("animMachado", true);
+                    timeAtk = 0.50f;
+
+                    StartCoroutine(AtaqueMachado());
+                    isAtack = true;
 
                 }
+
+                timeAtk -= Time.deltaTime; //ativado tanto nos comandos mobile quanto pc
+
+                if (timeAtk <= 0f)
+                {
+                    anim.SetBool("isAtk", false); // codigo de ataque
+                    isAtack = false;
+                    point.SetActive(false);
+
+                }
+
+                if (isVisible == true) //ativa quando recebe danos de um inimigo próximo, aquelas piscadinhas
+                {
+
+                    visibleCount += Time.deltaTime;
+                    if (visibleCount >= visibleTime)
+                    {
+                        //Debug.Log("acertou");
+                        visibleCount = 0;
+                        isVisible = false;
+                        this.GetComponent<SpriteRenderer>().color = Color.white;
+
+                    }
+                }
             }
+
+
+
         }
     }
 
@@ -203,7 +266,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 10)
 
         {
-            
+
             Controller.current.RemoveLife(1);
             gcc = GameObject.FindGameObjectWithTag("GC").GetComponent<GameControllerCheck>();
             transform.position = gcc.LastCheckpoint;

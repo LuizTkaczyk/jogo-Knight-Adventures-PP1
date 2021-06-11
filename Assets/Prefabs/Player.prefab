@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3428260112128703424}
   - component: {fileID: 3428260112128703425}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point
   m_TagString: pointAtk
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 3428260112713214787}
   - component: {fileID: 3428260112713214786}
   - component: {fileID: 3428260112713214785}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 9fead41a28a4aad42a530e1b04de79e3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.990566, g: 0.98589355, b: 0.98589355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,12 +176,12 @@ MonoBehaviour:
   SpriteRend: {fileID: 0}
   isVisible: 0
   isAlive: 1
-  isRight: 0
-  isLeft: 0
-  isAtk: 1
+  movements: 0
   Axe: {fileID: 4731461345660819477, guid: e02773060c6217e4f94d5546fc50a743, type: 3}
   AxePitch: {fileID: 3428260113730599215}
   tpsLimite: 10
+  fungus: {fileID: 0}
+  villager: {fileID: 0}
 --- !u!50 &3428260112713214787
 Rigidbody2D:
   serializedVersion: 4
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3428260113730599216}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AtackAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

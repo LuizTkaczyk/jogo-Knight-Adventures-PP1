@@ -43,7 +43,7 @@ public class BallCatapult : MonoBehaviour
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f);
-                Controller.current.RemoveLife(1);
+                Controller.current.RemoveLife(2);
 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.040f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;

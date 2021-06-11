@@ -16,6 +16,12 @@ public class TransitionsLevels : MonoBehaviour
         StartCoroutine(FadeLevel());
     }
 
+    public void LoadLevels()
+    {
+        Debug.Log("press");
+        //SceneManager.LoadScene("Level1");
+    }
+
     IEnumerator FadeLevel()
     {
         yield return new WaitForSeconds(timeTransition);
