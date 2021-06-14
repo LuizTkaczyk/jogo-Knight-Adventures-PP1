@@ -18,25 +18,25 @@ public class SettingsMenu : MonoBehaviour
 
     //resolução
     public bool isFullScreen;
-    public int resolutionIndex;
+    //public int resolutionIndex;
     public int qualityTexture;
     public Toggle fullScreenToggle;
-    public Dropdown resolutionDrop;
+    //public Dropdown resolutionDrop;
     public Dropdown qualityTextureDrop;
 
     public Resolution[] resolutions;
 
     private void OnEnable()
     {
-        resolutions = Screen.resolutions;
-        foreach (Resolution reso in resolutions)
-        {
-            resolutionDrop.options.Add(new Dropdown.OptionData(reso.ToString()));
-        }
+        //resolutions = Screen.resolutions;
+        //foreach (Resolution reso in resolutions)
+        //{
+        //    resolutionDrop.options.Add(new Dropdown.OptionData(reso.ToString()));
+        //}
 
         //CHAMADO DE FUNCÕES
         fullScreenToggle.onValueChanged.AddListener(delegate { OnFullScreenToggle(); });
-        resolutionDrop.onValueChanged.AddListener(delegate { onResolutionChange(); });
+        //resolutionDrop.onValueChanged.AddListener(delegate { onResolutionChange(); });
         qualityTextureDrop.onValueChanged.AddListener(delegate { onTextureQualityChange(); });
     }
 
@@ -44,13 +44,15 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-
         
+    //    Screen.SetResolution(1366,768,fullScreenToggle.isOn,60);
+
+
         sliderMain.value = PlayerPrefs.GetFloat("main", sliderValueMain);
         sliderMusic.value = PlayerPrefs.GetFloat("music", sliderValueMusic);
         sliderEffects.value = PlayerPrefs.GetFloat("effect", sliderValueEffects);
 
-        resolutionDrop.value = PlayerPrefs.GetInt("reso", resolutionIndex);
+        //resolutionDrop.value = PlayerPrefs.GetInt("reso", resolutionIndex);
         qualityTextureDrop.value = PlayerPrefs.GetInt("quality", qualityTexture);
 
         if ((PlayerPrefs.GetInt("toggle") == 1))
@@ -109,11 +111,11 @@ public class SettingsMenu : MonoBehaviour
 
     //RESOLUÇÃO
 
-    
+
     public void OnFullScreenToggle()
     {
         Screen.fullScreen = fullScreenToggle.isOn;
-        onResolutionChange();
+        //onResolutionChange();
     }
 
     public void saveFullScreen()
@@ -129,16 +131,16 @@ public class SettingsMenu : MonoBehaviour
 
     }
 
-    public void onResolutionChange()
-    {
-        Screen.SetResolution(resolutions[resolutionDrop.value].width, resolutions[resolutionDrop.value].height, fullScreenToggle.isOn);
+    //public void onResolutionChange()
+    //{
+    //    Screen.SetResolution(resolutions[resolutionDrop.value].width, resolutions[resolutionDrop.value].height, fullScreenToggle.isOn);
         
-    }
+    //}
 
-    public void saveResolution()
-    {
-        PlayerPrefs.SetInt("reso", resolutionDrop.value);
-    }
+    //public void saveResolution()
+    //{
+    //    PlayerPrefs.SetInt("reso", resolutionDrop.value);
+    //}
 
     public void onTextureQualityChange()
     {

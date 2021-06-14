@@ -1933,9 +1933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b85556abd314f3f870c18c013fdcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickMode: 1
+  clickMode: 2
   nextClickDelay: 0
-  cancelEnabled: 1
+  cancelEnabled: 0
   ignoreMenuClicks: 1
 --- !u!114 &165371250
 MonoBehaviour:
@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickMode: 1
   nextClickDelay: 0
-  cancelEnabled: 1
+  cancelEnabled: 0
   ignoreMenuClicks: 1
 --- !u!114 &240073548
 MonoBehaviour:
@@ -14555,10 +14555,8 @@ MonoBehaviour:
   sliderValueEffects: 0
   audioMixer: {fileID: 24100000, guid: ce0eab21d35f4c34d8f4e04939653493, type: 2}
   isFullScreen: 0
-  resolutionIndex: 0
   qualityTexture: 0
   fullScreenToggle: {fileID: 0}
-  resolutionDrop: {fileID: 0}
   qualityTextureDrop: {fileID: 0}
 --- !u!1001 &1448657754
 PrefabInstance:

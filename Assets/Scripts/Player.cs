@@ -44,8 +44,10 @@ public class Player : MonoBehaviour
     public Flowchart fungus;
     //public GameObject[] uiElements;
     public static int exeOneTime = 0;
-    public GameObject villager;
+    private GameObject villager;
     private WaitForSeconds time;
+
+    private bool villagerLive = true;
 
     public static bool inputEnable = true;
     public static bool inputMove = true;
@@ -78,12 +80,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Movements();
-        Dialog();
+         Movements();
     }
 
     private void Update()
     {
+        if (villagerLive)
+        {
+            Dialog();
+        }
+       
+        
 
 
     }
@@ -95,6 +102,8 @@ public class Player : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, villager.transform.position) < 2f)
             {
+                villagerLive = true;
+                PauseMenu.inputEnable = false;
                 inputEnable = false;
                 isJumping = true;
                 Speed = 0;
@@ -110,12 +119,14 @@ public class Player : MonoBehaviour
 
     public void CloseDialog()
     {
+        PauseMenu.inputEnable = true;
         inputEnable = true;
         isJumping = false;
         exeOneTime = 1;
         Speed = 200;
         villager.GetComponent<Animator>().SetBool("talk", false);
         StartCoroutine(VillageDialog());
+        villagerLive = false;
 
     }
 

@@ -1563,7 +1563,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 70
-    width: 77
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickMode: 1
   nextClickDelay: 0
-  cancelEnabled: 1
+  cancelEnabled: 0
   ignoreMenuClicks: 1
 --- !u!114 &1377246062
 MonoBehaviour:
@@ -8587,7 +8587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickMode: 1
   nextClickDelay: 0
-  cancelEnabled: 1
+  cancelEnabled: 0
   ignoreMenuClicks: 1
 --- !u!223 &2065807311
 Canvas:

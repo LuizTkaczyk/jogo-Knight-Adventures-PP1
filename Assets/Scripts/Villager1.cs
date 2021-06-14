@@ -7,8 +7,11 @@ public class Villager1 : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rig;
 
+    public static Villager1 current;
+
     private void Start()
     {
+        current = this;
         anim = gameObject.GetComponent<Animator>();
         rig = gameObject.GetComponent<Rigidbody2D>();
     }

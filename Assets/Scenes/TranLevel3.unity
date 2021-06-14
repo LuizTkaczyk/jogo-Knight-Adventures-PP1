@@ -382,7 +382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Depois de vencer os aliados de Trolk na vila de Trolvila, Buk chega ao
+  m_Text: "Depois de vencer os aliados de Trolk na vila de Trolvania, Buk chega ao
     p\xE2ntano e se espanta ao encontrar um pobre ca\xE7ador..."
 --- !u!222 &544064300
 CanvasRenderer:
