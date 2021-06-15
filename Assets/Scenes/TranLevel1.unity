@@ -571,7 +571,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "O calaleiro Buk foi chamado para combater inimigos em Trolvania, ao chegar
+  m_Text: "O cavaleiro Buk foi chamado para combater inimigos em Trolvania, ao chegar
     na floresta ele encontra um alde\xE3o...."
 --- !u!222 &1774143006
 CanvasRenderer:

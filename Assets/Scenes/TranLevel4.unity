@@ -587,7 +587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Buk sabe que est\xE1 proximo de enfrentar Trolk, quando chega na caverna
+  m_Text: "Buk sabe que est\xE1 pr\xF3ximo de enfrentar Trolk, quando chega na caverna
     encontra um antigo conhecido...."
 --- !u!222 &1799609884
 CanvasRenderer:
