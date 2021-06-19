@@ -121,6 +121,7 @@ public class Controller : MonoBehaviour
     {
         SceneManager.LoadScene(0);
 
+       
     }
 
     public void QuitGame()
@@ -134,6 +135,13 @@ public class Controller : MonoBehaviour
         {
             Application.Quit();
         }
+
+        
+    }
+
+    public void DeleteAll()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
 }

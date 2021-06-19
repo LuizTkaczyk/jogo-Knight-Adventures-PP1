@@ -8,13 +8,25 @@ using Flowchart = Fungus.Flowchart;
 
 public class Player : MonoBehaviour
 {
+    
     private Rigidbody2D rig;
     private Animator anim;
     public bool isPaused;
+   
     public float Speed;
+    public float JumpForce;
+    public Transform groundCheck;
+    public float checkRadius;
+    public LayerMask isGround;
+    private bool isGrounded;
+
+    private int extraJumps;
+    public int extraJumpValue;
+
+
     public bool isJumping;
     public bool DoubleJump;
-    public float JumpForce;
+    
     public bool isAtack; //verifica se esta atacando
     private float timeAtk;
     public GameObject point; // esse é a referencia ao machado do player
@@ -56,6 +68,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
+        extraJumps = extraJumpValue;
         //determina a posição no inicio do jogo
         posInitial = new Vector2(-14.89f, -1.37f);
         transform.position = posInitial;
@@ -139,6 +152,9 @@ public class Player : MonoBehaviour
 
     private void Movements()
     {
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, isGround);
+
         //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
         if (isAlive == true)
         {
@@ -172,31 +188,26 @@ public class Player : MonoBehaviour
                 PosMachado = new Vector3(-0.500f, 0.680f, 0); //Posição do machado
             }
 
+
+            if(isGrounded == true)
+            {
+                extraJumps = extraJumpValue;
+            }
+
             // if (Input.GetKeyDown(KeyCode.Space))
-            if (Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
 
             {
+                rig.velocity = Vector2.up * JumpForce;
+                anim.SetBool("isJump", true);
+                Audios.current.PlayMusic(Audios.current.jumpSfx);
 
-                if (!isJumping)
-                {
-                    rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // codigo para o pulo
-                    isJumping = true;
-                    anim.SetBool("isJump", true);
-                    DoubleJump = true;
-                    Audios.current.PlayMusic(Audios.current.jumpSfx);
-
-                }
-                else
-                {
-                    if (DoubleJump)//pulo duplo
-                    {
-                        rig.AddForce(Vector2.up * (JumpForce * 0.9f), ForceMode2D.Impulse); // codigo para o pulo
-                        isJumping = true;
-                        anim.SetBool("isJump", true);
-                        DoubleJump = false;
-                        Audios.current.PlayMusic(Audios.current.jumpSfx);
-                    }
-                }
+                extraJumps--;
+            }else if(Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 &&isGrounded == true)
+            {
+                rig.velocity = Vector2.up * JumpForce;
+                anim.SetBool("isJump", true);
+                Audios.current.PlayMusic(Audios.current.jumpSfx);
 
             }
 
@@ -214,7 +225,7 @@ public class Player : MonoBehaviour
 
                     Audios.current.PlayMusic(Audios.current.atkSfx);
                     anim.SetBool("isAtk", true);
-                    anim.SetBool("animMachado", true);
+                    //anim.SetBool("animMachado", true);
                     timeAtk = 0.50f;
 
                     StartCoroutine(AtaqueMachado());

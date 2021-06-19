@@ -105,7 +105,7 @@ AnimatorStateMachine:
     m_Position: {x: -680, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -460354843201310381}
-    m_Position: {x: 130, y: 430, z: 0}
+    m_Position: {x: 130, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7538701033363954704}
     m_Position: {x: -240, y: -20, z: 0}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea64ec5ff885b649b245f9cfbf1d1ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
 --- !u!1101 &8102823660447285822
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

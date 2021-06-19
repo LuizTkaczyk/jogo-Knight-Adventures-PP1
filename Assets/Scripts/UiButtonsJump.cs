@@ -16,6 +16,7 @@ public class UiButtonsJump : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("outJump");
+        Destroy(gameObject, 1.3f);
 
     }
 

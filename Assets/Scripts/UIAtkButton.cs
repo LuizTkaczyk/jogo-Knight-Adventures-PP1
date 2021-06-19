@@ -16,6 +16,7 @@ public class UIAtkButton : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("outAtk");
+        Destroy(gameObject, 1.3f);
     }
 
 

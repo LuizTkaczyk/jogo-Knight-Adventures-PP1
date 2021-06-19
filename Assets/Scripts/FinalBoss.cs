@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FinalBoss : MonoBehaviour
 {
+
+    
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
@@ -47,15 +49,16 @@ public class FinalBoss : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
             isFlipped = true;
         }
+
+        
     }
 
-    //retira vida do boss
     public void TakeDemage(int demage)
     {
         currentHealth -= demage;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth <= 50)
+        if (currentHealth <= 90)
         {
             anim.SetBool("run", true);
         }
@@ -82,7 +85,7 @@ public class FinalBoss : MonoBehaviour
             anim.SetTrigger("hurt");
             TakeDemage(10);
 
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
                 anim.SetTrigger("die");
                 this.GetComponent<Rigidbody2D>().simulated = false;
@@ -97,15 +100,27 @@ public class FinalBoss : MonoBehaviour
 
         if (collision.gameObject.tag == "PlatformDown")
         {
-            Debug.Log("cabeça");
-            anim.SetTrigger("hurt");
+           
             TakeDemage(10);
+           
+            anim.SetTrigger("hurt");
+
+            if (currentHealth <= 0)
+            {
+                anim.SetTrigger("die");
+                this.GetComponent<Rigidbody2D>().simulated = false;
+
+                StartCoroutine(FinalScene());
+                
+
+            }
+
 
         }
 
         IEnumerator FinalScene()
         {
-           
+            Player.exeOneTime = 0;
             yield return new WaitForSeconds(2f);
             SceneTransition.SetTrigger("Start");
             StartCoroutine(end());

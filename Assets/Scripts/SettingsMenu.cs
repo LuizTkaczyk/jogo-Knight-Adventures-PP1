@@ -28,7 +28,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        //resolutions = Screen.resolutions;
+        
         //foreach (Resolution reso in resolutions)
         //{
         //    resolutionDrop.options.Add(new Dropdown.OptionData(reso.ToString()));
@@ -44,8 +44,9 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        
-    //    Screen.SetResolution(1366,768,fullScreenToggle.isOn,60);
+        Screen.fullScreen = fullScreenToggle.isOn;
+        QualitySettings.SetQualityLevel(2);
+        //    Screen.SetResolution(1366,768,fullScreenToggle.isOn,60);
 
 
         sliderMain.value = PlayerPrefs.GetFloat("main", sliderValueMain);
@@ -55,14 +56,14 @@ public class SettingsMenu : MonoBehaviour
         //resolutionDrop.value = PlayerPrefs.GetInt("reso", resolutionIndex);
         qualityTextureDrop.value = PlayerPrefs.GetInt("quality", qualityTexture);
 
-        if ((PlayerPrefs.GetInt("toggle") == 1))
-        {
-            fullScreenToggle.isOn = true;
-        }
-        else
-        {
-            fullScreenToggle.isOn = false;
-        }
+        //if ((PlayerPrefs.GetInt("toggle") == 1))
+        //{
+        //    fullScreenToggle.isOn = true;
+        //}
+        //else
+        //{
+        //    fullScreenToggle.isOn = false;
+        //}
        
     }
 
@@ -118,18 +119,18 @@ public class SettingsMenu : MonoBehaviour
         //onResolutionChange();
     }
 
-    public void saveFullScreen()
-    {
-        if(fullScreenToggle.isOn == true)
-        {
-            PlayerPrefs.SetInt("toggle", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("toggle", 0);
-        }
+    //public void saveFullScreen()
+    //{
+    //    if(fullScreenToggle.isOn == true)
+    //    {
+    //        PlayerPrefs.SetInt("toggle", 1);
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("toggle", 0);
+    //    }
 
-    }
+    //}
 
     //public void onResolutionChange()
     //{

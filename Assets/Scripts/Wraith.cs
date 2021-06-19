@@ -14,7 +14,7 @@ public class Wraith : MonoBehaviour
     public LayerMask allowedLayer;
     public Vector2 raycastOffset;
     private bool onTheFloor;
-    private bool airControl = true;
+    //private bool airControl = true;
     public float jumpForce = 10f;
     public bool scrolledToRight;
     private float smoothingMovement = .05f;

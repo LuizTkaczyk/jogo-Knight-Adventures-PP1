@@ -453,6 +453,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformDrop (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5888863
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.106277466
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
 --- !u!224 &241872514 stripped
@@ -1058,6 +1068,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformDrop (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5668309
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.15038824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
 --- !u!1 &380736875
@@ -1495,6 +1515,7 @@ GameObject:
   - component: {fileID: 458998912}
   - component: {fileID: 458998911}
   - component: {fileID: 458998908}
+  - component: {fileID: 458998903}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1502,6 +1523,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &458998903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458998902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  targetObject: {fileID: 1596723789}
+  methodName: Speed
+  delay: 0
 --- !u!114 &458998908
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1534,7 +1572,7 @@ MonoBehaviour:
   itemId: 1
   indentLevel: 0
   storyText: "Enfim cheguei na morada de Trolk! Acho que essas essas pedras podem
-    atingir sua cabe\xE7a, matando ele mais r\xE1pido!"
+    atingir sua cabe\xE7a, creio que isso possa me ajudar!!"
   description: 
   character: {fileID: 1649895372}
   portrait: {fileID: 21300000, guid: 401a0c763d246d44394d2224a9ac0589, type: 3}
@@ -1574,6 +1612,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 458998911}
   - {fileID: 458998908}
+  - {fileID: 458998903}
   suppressAllAutoSelections: 0
 --- !u!114 &458998913
 MonoBehaviour:
@@ -1591,7 +1630,7 @@ MonoBehaviour:
   scrollPos: {x: 0.00000023841858, y: -0.00000023841858}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 290
+  blockViewHeight: 294
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -1602,7 +1641,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 458998912}
   selectedCommands:
-  - {fileID: 458998911}
+  - {fileID: 458998903}
   variables: []
   description: 
   stepPause: 0
@@ -2411,6 +2450,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlatformDrop (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5728613
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.13832736
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
@@ -3284,6 +3333,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformDrop (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5568373
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.17037547
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
 --- !u!1 &988981712
@@ -3614,7 +3673,7 @@ PrefabInstance:
       objectReference: {fileID: 242057367}
     - target: {fileID: 78998964, guid: 1c6ebfcf04012a64f946f36e69af34eb, type: 3}
       propertyPath: maxHealth
-      value: 130
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1533426443444466400, guid: 1c6ebfcf04012a64f946f36e69af34eb,
         type: 3}
@@ -5687,6 +5746,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformDrop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5843081
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.11543357
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
 --- !u!4 &1443194789 stripped
@@ -5907,6 +5976,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformDrop (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.590592
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.102865934
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
 --- !u!1 &1481159283
@@ -6040,6 +6119,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1596723789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1533426443444466411, guid: 1c6ebfcf04012a64f946f36e69af34eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052104068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1602620949
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,6 +6660,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlatformDrop (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5912532
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.101543665
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}
@@ -8310,6 +8405,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5732555
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828068027600523271, guid: 7fde0b7cc3cf8014695da4dc65b0af99,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.13753903
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0b7cc3cf8014695da4dc65b0af99, type: 3}

@@ -69,6 +69,7 @@ public class PauseMenu : MonoBehaviour
         Destroy(Controller.current);
         RestartMenu.SetActive(false);
         Controller.current.StartGame();
+        Player.exeOneTime = 0;
     }
 
     public void MenuRestart()
@@ -81,6 +82,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         pauseMenu.SetActive(false);
+        Player.exeOneTime = 0;
 
     }
 
