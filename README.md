@@ -1,7 +1,7 @@
-#Baixar jogo .rar (102mb)
+#Baixar jogo Windows .rar (102mb)
 https://drive.google.com/file/d/1bZ82ZZs-PQT0zIvcPfoqXw0eKhX8gNfK/view?usp=sharing
 
-#Baixar jogo .exe (76mb)
+#Baixar jogo Windows .exe (76mb)
 https://drive.google.com/file/d/1ZNPsV7_UZhfsYucAyMQa0TX2AM4ni0Rc/view?usp=sharing
 
 #Baixar jogo Linux .rar(106mb)
