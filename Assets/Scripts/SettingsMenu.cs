@@ -28,15 +28,10 @@ public class SettingsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        
-        //foreach (Resolution reso in resolutions)
-        //{
-        //    resolutionDrop.options.Add(new Dropdown.OptionData(reso.ToString()));
-        //}
+
 
         //CHAMADO DE FUNCÕES
         fullScreenToggle.onValueChanged.AddListener(delegate { OnFullScreenToggle(); });
-        //resolutionDrop.onValueChanged.AddListener(delegate { onResolutionChange(); });
         qualityTextureDrop.onValueChanged.AddListener(delegate { onTextureQualityChange(); });
     }
 
@@ -46,7 +41,7 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = fullScreenToggle.isOn;
         QualitySettings.SetQualityLevel(2);
-        //    Screen.SetResolution(1366,768,fullScreenToggle.isOn,60);
+       
 
 
         sliderMain.value = PlayerPrefs.GetFloat("main", sliderValueMain);
@@ -56,14 +51,6 @@ public class SettingsMenu : MonoBehaviour
         //resolutionDrop.value = PlayerPrefs.GetInt("reso", resolutionIndex);
         qualityTextureDrop.value = PlayerPrefs.GetInt("quality", qualityTexture);
 
-        //if ((PlayerPrefs.GetInt("toggle") == 1))
-        //{
-        //    fullScreenToggle.isOn = true;
-        //}
-        //else
-        //{
-        //    fullScreenToggle.isOn = false;
-        //}
        
     }
 
@@ -118,30 +105,6 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = fullScreenToggle.isOn;
         //onResolutionChange();
     }
-
-    //public void saveFullScreen()
-    //{
-    //    if(fullScreenToggle.isOn == true)
-    //    {
-    //        PlayerPrefs.SetInt("toggle", 1);
-    //    }
-    //    else
-    //    {
-    //        PlayerPrefs.SetInt("toggle", 0);
-    //    }
-
-    //}
-
-    //public void onResolutionChange()
-    //{
-    //    Screen.SetResolution(resolutions[resolutionDrop.value].width, resolutions[resolutionDrop.value].height, fullScreenToggle.isOn);
-        
-    //}
-
-    //public void saveResolution()
-    //{
-    //    PlayerPrefs.SetInt("reso", resolutionDrop.value);
-    //}
 
     public void onTextureQualityChange()
     {
