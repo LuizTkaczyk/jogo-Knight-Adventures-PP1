@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
+    //Menu de configurações
+
     //volumes
     public Slider sliderMain;
     public Slider sliderMusic;
@@ -16,20 +18,14 @@ public class SettingsMenu : MonoBehaviour
     public float sliderValueEffects;
     public AudioMixer audioMixer;
 
-    //resolução
+    //Tela
     public bool isFullScreen;
-    //public int resolutionIndex;
     public int qualityTexture;
     public Toggle fullScreenToggle;
-    //public Dropdown resolutionDrop;
     public Dropdown qualityTextureDrop;
-
-    public Resolution[] resolutions;
 
     private void OnEnable()
     {
-
-
         //CHAMADO DE FUNCÕES
         fullScreenToggle.onValueChanged.AddListener(delegate { OnFullScreenToggle(); });
         qualityTextureDrop.onValueChanged.AddListener(delegate { onTextureQualityChange(); });
@@ -41,17 +37,10 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = fullScreenToggle.isOn;
         QualitySettings.SetQualityLevel(2);
-       
-
-
         sliderMain.value = PlayerPrefs.GetFloat("main", sliderValueMain);
         sliderMusic.value = PlayerPrefs.GetFloat("music", sliderValueMusic);
         sliderEffects.value = PlayerPrefs.GetFloat("effect", sliderValueEffects);
-
-        //resolutionDrop.value = PlayerPrefs.GetInt("reso", resolutionIndex);
         qualityTextureDrop.value = PlayerPrefs.GetInt("quality", qualityTexture);
-
-       
     }
 
     //VOLUMES!!

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class EnemyDragon : MonoBehaviour
 {
+    //Código do inimigo dragão
 
-    public float AtkInterval; //intervalo de ataque do dragão
-    public float AtkDistance; //distancia em que  dragão vai atacar o player
-
+    public float AtkInterval; 
+    public float AtkDistance; 
     private float IntervalAtk;
     private bool isAtk;
-    public GameObject FireBall; // bola de fogo lançada pelo dragão
-
-    private Animator anim;//chama o animator
+    public GameObject FireBall; 
+    private Animator anim;
     private GameObject player;
-    Vector3 firePos; // o fogo do dragão sai um pouco a fremte da boca
+    Vector3 firePos;
    
     
     // Start is called before the first frame update
@@ -67,12 +66,12 @@ public class EnemyDragon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        if (collision.gameObject.tag == "Player") 
         {
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
                 collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-                Controller.current.RemoveLife(1); //perde uma vida
+                Controller.current.RemoveLife(1); 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
 
@@ -80,9 +79,9 @@ public class EnemyDragon : MonoBehaviour
         }
 
 
-        if (collision.gameObject.layer == 9) //layer do machado !
+        if (collision.gameObject.layer == 9)
         {
-            GetComponent<Rigidbody2D>().simulated = false;//desativa a massa do golem
+            GetComponent<Rigidbody2D>().simulated = false;
             anim.SetTrigger("die");
             Destroy(this);
             Destroy(gameObject, 0.7f);

@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Checkpoint : MonoBehaviour
 {
-    private GameControllerCheck GC; //referencia a classe GameControllercheck
+    //Codigo do Checkpoint
+
+    private GameControllerCheck GC;
     private Animator anim;
     public GameObject checkLetters;
     public GameObject platform;
@@ -14,7 +16,6 @@ public class Checkpoint : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-
         GC = GameObject.FindGameObjectWithTag("GC").GetComponent<GameControllerCheck>(); //encontra o objeto na cena com a tag "GC"
         platform = GameObject.FindGameObjectWithTag("PlatformDown");
     }

@@ -3489,14 +3489,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1030102804, guid: 3b6a5dd94efaf934da32b3c9838e041a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.447
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030102804, guid: 3b6a5dd94efaf934da32b3c9838e041a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.698
-      objectReference: {fileID: 0}
     - target: {fileID: 3428260112713214655, guid: 3b6a5dd94efaf934da32b3c9838e041a,
         type: 3}
       propertyPath: m_Name
@@ -3562,16 +3554,6 @@ PrefabInstance:
       propertyPath: fungus
       value: 
       objectReference: {fileID: 356749809}
-    - target: {fileID: 3428260113630115742, guid: 3b6a5dd94efaf934da32b3c9838e041a,
-        type: 3}
-      propertyPath: JumpForce
-      value: 11.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3428260113630115742, guid: 3b6a5dd94efaf934da32b3c9838e041a,
-        type: 3}
-      propertyPath: isGround.m_Bits
-      value: 3145984
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b6a5dd94efaf934da32b3c9838e041a, type: 3}
 --- !u!1 &347320341 stripped
@@ -3797,7 +3779,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 70
-    width: 77
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8752,7 +8734,7 @@ PrefabInstance:
     - target: {fileID: 8010954609173741337, guid: b928d8e22b52d8d4c829aa4fe967e8f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -288.05
+      value: -289.2
       objectReference: {fileID: 0}
     - target: {fileID: 8010954609173741337, guid: b928d8e22b52d8d4c829aa4fe967e8f0,
         type: 3}

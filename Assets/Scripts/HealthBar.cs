@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    //Barra de vida do chefe final
 
     public Slider slider;
 

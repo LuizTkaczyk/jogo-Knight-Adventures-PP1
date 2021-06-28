@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Golem2 : MonoBehaviour
 {
-    public float Speed; //define a velocidade do inimigo
 
-    public bool Direction;//define as direções do inimigo
-    public float DurationDirection;// define o tempo em que o inimigo andara em cada direção
+    //Código do golem 2
 
-
+    public float Speed;
+    public bool Direction;
+    public float DurationDirection;
     private Animator anim;
     private float TimeDirection;
 
@@ -23,23 +23,23 @@ public class Golem2 : MonoBehaviour
     // Update is called once per frame
 
 
-    void Update() // cofigura se o inimigo vai para a esquerda ou direita
+    void Update() 
     {
-        if (Direction)  // rotação do inimigo
+        if (Direction)
         {
-            transform.eulerAngles = new Vector2(0, 0); //olhando para a direita
+            transform.eulerAngles = new Vector2(0, 0);
         }
 
         else
         {
-            transform.eulerAngles = new Vector2(0, 180); //olhando para a esquerda
+            transform.eulerAngles = new Vector2(0, 180);
         }
 
-        transform.Translate(Vector2.right * Speed * Time.deltaTime); //movimenta o inimigo
+        transform.Translate(Vector2.right * Speed * Time.deltaTime);
 
         TimeDirection += Time.deltaTime;
 
-        if (TimeDirection >= DurationDirection) //inverte o boleano direction de acordo com o tempo
+        if (TimeDirection >= DurationDirection) 
         {
             TimeDirection = 0;
             Direction = !Direction;

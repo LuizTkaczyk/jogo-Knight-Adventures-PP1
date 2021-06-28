@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Cam : MonoBehaviour
 {
+    //Codigo da câmera, parar seguir o player
 
     private GameObject player;
     public float Speed;

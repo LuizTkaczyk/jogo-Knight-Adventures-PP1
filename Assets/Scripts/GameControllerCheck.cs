@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class GameControllerCheck : MonoBehaviour
 {
-    //scrip para saber a posição do checkpoint
+    //Código para saber a posição do checkpoint
    
     public static GameControllerCheck instance;
     public Vector2 LastCheckpoint;
-    
-
-    // Start is called before the first frame update
-
 
     void Start()
     {
@@ -19,9 +15,7 @@ public class GameControllerCheck : MonoBehaviour
         
         if (instance == null)
         {
-            instance = this;
-            //Destroy(instance);
-            
+            instance = this;   
         }
         else
         {

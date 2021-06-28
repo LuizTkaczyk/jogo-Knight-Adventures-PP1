@@ -4,26 +4,21 @@ using UnityEngine;
 
 public class Golem1 : MonoBehaviour
 {
+    //Código do golem 1
 
-    public float Speed; //define a velocidade do inimigo
-    public bool Direction;//define as direções do inimigo
-    public float DurationDirection;// define o tempo em que o inimigo andara em cada direção
+    public float Speed; 
+    public bool Direction;
+    public float DurationDirection;
     private Animator anim;
     private float TimeDirection;
-    //public float DetectionArea;
-
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-
-
-    void Update() // cofigura se o inimigo vai para a esquerda ou direita
+    void Update() 
     {
         movimentoGolem();
     }
@@ -54,19 +49,19 @@ public class Golem1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        if (collision.gameObject.tag == "Player") 
         {
             anim.SetTrigger("atk1");
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-                Controller.current.RemoveLife(1); //perde uma vida
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f);
+                Controller.current.RemoveLife(1);
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
         }
 
-        if (collision.gameObject.layer == 9) //layer do machado !
+        if (collision.gameObject.layer == 9)
         {
             Speed = 0;
             anim.SetTrigger("die");

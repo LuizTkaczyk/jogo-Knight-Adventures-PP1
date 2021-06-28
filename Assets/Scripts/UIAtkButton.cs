@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIAtkButton : MonoBehaviour
 {
+    //Botões de dica na fase da floresta
+
     private Animator anim;
     // Start is called before the first frame update
     void Start()

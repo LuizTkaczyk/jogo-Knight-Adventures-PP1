@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030102803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: -1.74, z: 0}
+  m_LocalPosition: {x: 0.447, y: -1.698, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3428260112713214784}
@@ -199,12 +199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   Speed: 200
-  JumpForce: 11
+  JumpForce: 11.5
   groundCheck: {fileID: 1030102804}
   checkRadius: 0.5
   isGround:
     serializedVersion: 2
-    m_Bits: 3211520
+    m_Bits: 3145984
   extraJumpValue: 1
   isJumping: 0
   DoubleJump: 0
@@ -278,9 +278,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3571824, y: 1.0288994}
+  m_Offset: {x: 0.27306762, y: 0.8536613}
   serializedVersion: 2
-  m_Radius: 1.1441905
+  m_Radius: 1.2913901
 --- !u!1 &3428260113730599215
 GameObject:
   m_ObjectHideFlags: 0

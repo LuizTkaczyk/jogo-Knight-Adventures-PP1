@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Archer2 : MonoBehaviour
 {
-    public GameObject arrow;
-   
-    public Transform shotPoint;
+    //Código do arqueiro
 
+    public GameObject arrow;
+    public Transform shotPoint;
     private GameObject player;
     private Animator anim;
     private Vector3 posFlecha;
@@ -26,14 +26,6 @@ public class Archer2 : MonoBehaviour
 
     }
 
-    //IEnumerator AtaqueFlecha()
-    //{
-    //    yield return new WaitForSeconds(IntervaloAtaque);
-        
-    //    Shoot();
-
-    //}
-
     void Shoot()
     {
         StartCoroutine(timerArrow());
@@ -41,9 +33,6 @@ public class Archer2 : MonoBehaviour
         anim.SetTrigger("Ataque");
        
     }
-
-
-    
 
     IEnumerator timerArrow()
     {

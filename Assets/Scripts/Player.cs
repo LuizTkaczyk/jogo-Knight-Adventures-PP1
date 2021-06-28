@@ -8,30 +8,26 @@ using Flowchart = Fungus.Flowchart;
 
 public class Player : MonoBehaviour
 {
-    
+    //Códigos do player - Buk
+
     private Rigidbody2D rig;
     private Animator anim;
     public bool isPaused;
-   
     public float Speed;
     public float JumpForce;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask isGround;
     private bool isGrounded;
-
     private int extraJumps;
     public int extraJumpValue;
-
-
     public bool isJumping;
     public bool DoubleJump;
-    
     public bool isAtack; //verifica se esta atacando
     private float timeAtk;
-    public GameObject point; // esse é a referencia ao machado do player
+    public GameObject point; 
     public SpriteRenderer SpriteRend;
-    private float visibleTime = 1.4f; //tempo em que o player fica invisivel ao receber um dano
+    private float visibleTime = 1.4f;
     public bool isVisible;
     private float visibleCount;
     public bool isAlive;
@@ -49,18 +45,14 @@ public class Player : MonoBehaviour
 
     //posição inicial do player
     private Vector2 posInitial;
-
     private GameControllerCheck gcc;
 
     //Caixa de diálogo
     public Flowchart fungus;
-    //public GameObject[] uiElements;
     public static int exeOneTime = 0;
     private GameObject villager;
     private WaitForSeconds time;
-
     private bool villagerLive = true;
-
     public static bool inputEnable = true;
     public static bool inputMove = true;
 
@@ -72,13 +64,10 @@ public class Player : MonoBehaviour
         //determina a posição no inicio do jogo
         posInitial = new Vector2(-14.89f, -1.37f);
         transform.position = posInitial;
-
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         SpriteRend = GetComponent<SpriteRenderer>();
-
         villager = GameObject.FindGameObjectWithTag("Villager");
-       
         time = new WaitForSeconds(2.5f);
     }
 
@@ -102,10 +91,6 @@ public class Player : MonoBehaviour
         {
             Dialog();
         }
-       
-        
-
-
     }
 
     void Dialog()
@@ -155,7 +140,6 @@ public class Player : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, isGround);
 
-        //COMANDOS PARA PC--------------------------------------------------------------------------------------------------------------------------------------------
         if (isAlive == true)
         {
 
@@ -233,7 +217,7 @@ public class Player : MonoBehaviour
 
                 }
 
-                timeAtk -= Time.deltaTime; //ativado tanto nos comandos mobile quanto pc
+                timeAtk -= Time.deltaTime; 
 
                 if (timeAtk <= 0f)
                 {

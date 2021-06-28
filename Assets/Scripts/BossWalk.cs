@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BossWalk : StateMachineBehaviour
 {
+    //Código do Chefe final - parte de andar e corrida
+
     [SerializeField]
     public float speed;
-
     Transform player;
     Rigidbody2D rig;
-    
     FinalBoss boss;
     float attackRange = 4f;
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformDrop : MonoBehaviour
 {
+    //Plataformas que caem no cenário do chefe final
+
     private Animator anim;
     private BoxCollider2D coll;
     public float timeDrop;

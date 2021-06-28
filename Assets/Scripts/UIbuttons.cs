@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIbuttons : MonoBehaviour
 {
+    //Botões de dica na fase da floresta
 
     private Animator anim;
     // Start is called before the first frame update

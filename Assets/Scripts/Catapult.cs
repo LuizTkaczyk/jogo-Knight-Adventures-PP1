@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
+    //Código da catapulta
 
     public GameObject catapultBall;
     public Transform shotPoint;
-
     private GameObject player;
     private Animator anim;
     private Vector3 catapultBallPosition;
@@ -93,13 +93,11 @@ public class Catapult : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        if (collision.gameObject.tag == "Player")
         {
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                //collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-                Controller.current.RemoveLife(1); //perde uma vida
-
+                Controller.current.RemoveLife(1); 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
@@ -110,7 +108,6 @@ public class Catapult : MonoBehaviour
         {
             anim.SetTrigger("Explosion");
             Audios.current.audioSurce.PlayOneShot(Audios.current.cataExplosion, 0.13f);//recebe o audio da explosão da catapulta e aplica o volume de 0.2 
-            //GetComponent<BoxCollider2D>().enabled = false; //o colisor é desativado ao destruir o inimigo
             GetComponent<Rigidbody2D>().simulated = false;
             Destroy(gameObject, 1.5f);
             StopCoroutine("AtaqueBolaCatapulta");

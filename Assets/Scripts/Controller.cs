@@ -6,16 +6,15 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
-    public static Controller current;
+    //Códigos gerais, de iniciar o jogo, pausar e sair do jogo e vidas do jogador
 
-    public GameObject life; //prefab instanciado
+    
+    public static Controller current;
+    public GameObject life;
     private int PlayerLives;
     private Transform Lives;
-
-    private GameObject GameOverPanel; //chama o canvas do game over
-
+    private GameObject GameOverPanel;
     private bool isPaused;
-
     private Animator anim;
     private GameObject player;
     private GameObject golom;
@@ -27,8 +26,6 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
         current = this;
         bgm = GameObject.FindGameObjectWithTag("bgmMenu");
         anim = GetComponent<Animator>();
@@ -36,7 +33,6 @@ public class Controller : MonoBehaviour
         golom = GameObject.FindGameObjectWithTag("Golom"); //faz referencia ao Golom na classe controller
         dragon = GameObject.FindGameObjectWithTag("Dragon"); //faz referencia ao Dragon na classe controller
         menu = GameObject.FindGameObjectWithTag("MenuPause");
-
         GameOverPanel = GameObject.FindGameObjectWithTag("MenuPause");
 
         if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Config")
@@ -77,9 +73,9 @@ public class Controller : MonoBehaviour
 
         if (Lives.childCount < 1)
         {
-            menu.GetComponent<PauseMenu>().enabled = false; // desativa o menu de pausa ao morrer
+            menu.GetComponent<PauseMenu>().enabled = false; 
             player.GetComponent<Player>().isAlive = false;
-            player.GetComponent<Animator>().SetBool("playerDie", true);//pega a animação de morte da classe do player
+            player.GetComponent<Animator>().SetBool("playerDie", true);
             player.GetComponent<Player>().Speed = 0;
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX; // congela o player onde estiver
             player.GetComponent<Rigidbody2D>().simulated = false; // ativa a opção simulated, que deixa o player sem massa.

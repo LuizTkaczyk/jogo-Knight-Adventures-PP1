@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MagicBall2 : MonoBehaviour
 {
+    //Bola de magia do fantasma
+
     public float Speed;
     public float Damage;
     private Animator anim;
@@ -23,12 +25,12 @@ public class MagicBall2 : MonoBehaviour
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //bola de fogo do dragão
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
         if (collision.gameObject.tag == "Player")
         {
             anim.SetTrigger("magicBall");
-            anim.GetComponent<CircleCollider2D>().enabled = false; // o colisor é desativado, assim a fumaça não tira dano
+            anim.GetComponent<CircleCollider2D>().enabled = false;
             player.GetComponent<Animator>().SetTrigger("Dano");
             Speed = 1f;
 

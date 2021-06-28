@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TransitionsLevels : MonoBehaviour
 {
+    //Efeito de fade in e fade out ao passar de cenário
+
     public string levelName;
     public Animator SceneTransition;
     public int timeTransition;
@@ -14,12 +16,6 @@ public class TransitionsLevels : MonoBehaviour
     {
         PauseMenu.inputEnable = false;
         StartCoroutine(FadeLevel());
-    }
-
-    public void LoadLevels()
-    {
-        Debug.Log("press");
-        //SceneManager.LoadScene("Level1");
     }
 
     IEnumerator FadeLevel()

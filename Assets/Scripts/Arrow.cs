@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    Rigidbody2D rig;
 
-    //perseguir o player
+    //Código da flecha do arqueiro
+    Rigidbody2D rig;
     public float moveSpeed;
     private GameObject target;
     Vector2 moveDirection;

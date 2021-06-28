@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Villager2 : MonoBehaviour
 {
+    //Aldeão que conversa como player
+
     private Animator anim;
     private Rigidbody2D rig;
 

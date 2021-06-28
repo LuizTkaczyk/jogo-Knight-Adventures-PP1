@@ -5,28 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class FinalBoss : MonoBehaviour
 {
-
+    //Código do chefe final, vida e direção em que olha o player
     
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
-
     private Animator anim;
-
     public Transform player;
     private GameObject playerP;
-
     public bool isFlipped = false;
-
     public Animator SceneTransition;
 
     private void Start()
     {
-
         //barra de vida do boss
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-
         anim = gameObject.GetComponent<Animator>();
         playerP = GameObject.FindGameObjectWithTag("Player");
     }
@@ -66,18 +60,16 @@ public class FinalBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        if (collision.gameObject.tag == "Player") 
         {
 
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
-                Controller.current.RemoveLife(1); //perde uma vida
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f);
+                Controller.current.RemoveLife(1); 
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
-
-
         }
 
         if (collision.gameObject.layer == 9) //layer do machado !
@@ -89,13 +81,8 @@ public class FinalBoss : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 this.GetComponent<Rigidbody2D>().simulated = false;
-
                 StartCoroutine(FinalScene());
-                
-
             }
-
-
         }
 
         if (collision.gameObject.tag == "PlatformDown")
@@ -109,13 +96,9 @@ public class FinalBoss : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 this.GetComponent<Rigidbody2D>().simulated = false;
-
                 StartCoroutine(FinalScene());
                 
-
             }
-
-
         }
 
         IEnumerator FinalScene()
@@ -124,15 +107,12 @@ public class FinalBoss : MonoBehaviour
             yield return new WaitForSeconds(2f);
             SceneTransition.SetTrigger("Start");
             StartCoroutine(end());
-           
         }
 
         IEnumerator end()
         {
             yield return new WaitForSeconds(5f); 
             SceneManager.LoadScene(12);
-
-
         }
     }
 }

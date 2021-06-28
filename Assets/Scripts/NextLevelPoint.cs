@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelPoint : MonoBehaviour
 {
+    //Código que tranfere o player ao próximo cenário
 
     public string levelName;
     public Animator SceneTransition;

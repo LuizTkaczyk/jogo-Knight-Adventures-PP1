@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Wraith : MonoBehaviour
 {
+    //Código do fantasma 1
     private Rigidbody2D rig;
     private int walkRight;
     public float velocity;
     private float horizontalMovement;
     private Animator anim;
-
-
     public LayerMask allowedLayer;
     public Vector2 raycastOffset;
     private bool onTheFloor;
-    //private bool airControl = true;
     public float jumpForce = 10f;
     public bool scrolledToRight;
     private float smoothingMovement = .05f;
-
     public float detectionArea;
     public bool chaseMode;
     private bool chasePlayer;
@@ -28,15 +25,12 @@ public class Wraith : MonoBehaviour
 
     [SerializeField]
     GameObject player;
-
     public GameObject magicBall;
     Vector3 firePos;
     private bool isAtk;
-    public float AtkInterval; //intervalo de ataque do dragão
-    public float AtkDistance; //distancia em que  dragão vai atacar o player
-
+    public float AtkInterval; 
+    public float AtkDistance; 
     private float IntervalAtk;
-
     public float atkTimer;
 
 
@@ -70,7 +64,7 @@ public class Wraith : MonoBehaviour
 
         }
 
-        if (isAtk) // o dragão para de atacar
+        if (isAtk) 
         {
             IntervalAtk += Time.deltaTime;
             if (IntervalAtk >= AtkInterval)

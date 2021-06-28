@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GolemIA1 : MonoBehaviour
 {
+
+    //Código do golem com IA 
+
     private Rigidbody2D rig;
     private int walkRight;
     public float velocity;
     private float horizontalMovement;
     private Animator anim;
-
-
     public LayerMask allowedLayer;
     public Vector2 raycastOffset;
     private bool onTheFloor;
@@ -18,7 +19,6 @@ public class GolemIA1 : MonoBehaviour
     public float jumpForce = 10f;
     private bool scrolledToRight = true;
     private float smoothingMovement = .05f;
-
     public float detectionArea;
     public bool chaseMode;
     private bool chasePlayer;
@@ -71,13 +71,9 @@ public class GolemIA1 : MonoBehaviour
 
         //movimento do inimigo
         horizontalMovement = walkRight * velocity;
-
-
-
         var inicioX = transform.position.x + raycastOffset.x;
         var inicioY = transform.position.y + raycastOffset.y;
-
-
+        
         //detecta a parede da direita e volta
         var raycastParedeDireita = Physics2D.Raycast(new Vector2(inicioX, inicioY), Vector2.right, 0.5f, allowedLayer);
         Debug.DrawRay(new Vector2(transform.position.x, inicioY), Vector2.right, Color.blue);
@@ -123,10 +119,7 @@ public class GolemIA1 : MonoBehaviour
         }
 
     }
-
-
-
-
+    
     public void Movimento(float qtdMovimento, bool pulando)
     {
 

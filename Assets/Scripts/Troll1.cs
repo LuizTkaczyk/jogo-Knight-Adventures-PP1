@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Troll1 : MonoBehaviour
 {
+    //Códigos do trol 1
+
     public float speed;
     public float distance;
     public bool isRight = true;
@@ -24,8 +26,6 @@ public class Troll1 : MonoBehaviour
 
     void EnemyMovement()
     {
-
-        //anim.SetTrigger("walk");
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         RaycastHit2D ground = Physics2D.Raycast(groundCheck.position, Vector2.down, distance);
 
@@ -49,19 +49,19 @@ public class Troll1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // se o inimigo bater no player , o inimigo ataca
+        if (collision.gameObject.tag == "Player") 
         {
             anim.SetTrigger("attack");
             if (!collision.gameObject.GetComponent<Player>().isVisible)
             {
-                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); // força do empurrão do inimigo
+                collision.gameObject.transform.Translate(-Vector2.right * 0.5f); 
                 Controller.current.RemoveLife(1); //perde uma vida
                 StartCoroutine(collision.gameObject.GetComponent<Player>().PlayerDemage(0.05f));
                 collision.gameObject.GetComponent<Player>().isVisible = true;
             }
         }
 
-        if (collision.gameObject.layer == 9) //layer do machado 
+        if (collision.gameObject.layer == 9)
         {
             speed = 0;
             anim.SetTrigger("die");

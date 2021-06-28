@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Axe : MonoBehaviour
 {
+    //Código do machado do player
 
     Rigidbody2D rig;
     Vector2 moveDirection;
@@ -16,7 +17,6 @@ public class Axe : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.right * Speed * Time.deltaTime);

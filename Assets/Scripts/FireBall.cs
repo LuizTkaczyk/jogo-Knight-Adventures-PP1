@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-
+    //Código da bola de fogo que o dragão lança
+   
     public float Speed;
     public float Damage;
     private Animator anim;
     private GameObject player;
 
-    // Start is called before the first frame update
     void Start()
     {
-
         Destroy(gameObject, 4f);
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +24,7 @@ public class FireBall : MonoBehaviour
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //bola de fogo do dragão
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

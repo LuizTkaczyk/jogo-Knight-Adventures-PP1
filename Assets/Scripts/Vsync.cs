@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vsync : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Sincronia vertical travada a 60 fps
 
 
     private void Awake()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
+    //Codigo da poção que adiona uma vida
+
     public int LifeValue;
     public GameObject animLife;
     private SpriteRenderer sprite;

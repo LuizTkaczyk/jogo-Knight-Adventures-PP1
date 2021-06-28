@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
+    //Código do fundo paralax
 
     private float lenght;
     private float StartPos;

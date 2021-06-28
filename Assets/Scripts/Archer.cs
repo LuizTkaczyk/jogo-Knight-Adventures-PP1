@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class Archer : MonoBehaviour
 {
-    public GameObject arrow;
-   
-    public Transform shotPoint;
 
+    //Código do arqueiro
+    public GameObject arrow;
+    public Transform shotPoint;
     private GameObject player;
     private Animator anim;
     private Vector3 posFlecha;
     private bool isAtk;
-    
     public float DistanciaAtaque;
     public float IntervaloAtaque;
     private float IntervaloDistancia;

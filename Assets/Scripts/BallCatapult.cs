@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BallCatapult : MonoBehaviour
 {
-    Rigidbody2D rig;
+    //Código da bola da catapulta
 
-    //perseguir o player
+    Rigidbody2D rig;
     public float moveSpeed = 15f;
     private Player target;
     Vector2 moveDirection;
@@ -16,11 +16,12 @@ public class BallCatapult : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rig = GetComponent<Rigidbody2D>();//codigos perseguir o player
+        rig = GetComponent<Rigidbody2D>();
         target = GameObject.FindObjectOfType<Player>();
-
+        
+        //codigos perseguir o player
         moveDirection = (target.transform.position - transform.position).normalized * moveSpeed;
-        rig.velocity = new Vector2(moveDirection.x, moveDirection.y + 4);//ate aqui
+        rig.velocity = new Vector2(moveDirection.x, moveDirection.y + 4);
         Destroy(gameObject, 3f);
 
     }
@@ -31,9 +32,7 @@ public class BallCatapult : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
     }
-
-
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

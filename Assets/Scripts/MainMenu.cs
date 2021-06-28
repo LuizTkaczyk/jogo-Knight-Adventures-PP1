@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    //Menu principal
+
     public GameObject MenuPrincip;
     public GameObject pauseFirstBtn;
 

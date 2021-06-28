@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Audios : MonoBehaviour
 {
+    //Referências aos audios do jogo em geral
 
     public static Audios current;
     public AudioClip jumpSfx;
@@ -16,7 +17,7 @@ public class Audios : MonoBehaviour
     public AudioClip deathArcher;
     public AudioClip cataExplosion;
 
-    // Start is called before the first frame update
+ 
     void Start()
     {
         

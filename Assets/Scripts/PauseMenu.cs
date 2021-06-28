@@ -7,14 +7,13 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    //Código do menu de pausa, comando como voltar o jogo, sair do jogo
+
     public static PauseMenu current;
     public GameObject pauseMenu;
     public GameObject RestartMenu;
     public GameObject pausePrimeiroBtn;
-    // public GameObject canvas;
     public bool isAlive;
-
-    //teste desbilitar teclado
     public static bool inputEnable = true; // bool que verifica se os btns estão ativados ou não
 
     // Start is called before the first frame update
@@ -30,7 +29,7 @@ public class PauseMenu : MonoBehaviour
 
         if (inputEnable)
         {
-            if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))  //ESc OU start do controle
+            if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("PauseJoystick")))
             {
                 PauseUnpause();
             }

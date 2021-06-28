@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class WeaponBoss : MonoBehaviour
 {
+    //Arma do chefe final
+
     public Vector3 attackOffset;
     public float attackRange = 1f;
     public LayerMask attackMask;
-
     private GameObject player;
 
     private void Start()
