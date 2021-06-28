@@ -52,7 +52,7 @@ public class FinalBoss : MonoBehaviour
         currentHealth -= demage;
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth <= 90)
+        if (currentHealth <= 80)
         {
             anim.SetBool("run", true);
         }

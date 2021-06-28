@@ -3779,7 +3779,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 70
-    width: 60
+    width: 77
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5062,7 +5062,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 26.828972, y: 3.7224927}
+  m_Offset: {x: 21.382708, y: 3.7224927}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5073,7 +5073,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40.43528, y: 0.1147356}
+  m_Size: {x: 51.32781, y: 0.1147356}
   m_EdgeRadius: 0
 --- !u!1 &482908704
 GameObject:
@@ -20540,12 +20540,12 @@ PrefabInstance:
     - target: {fileID: 3807833284091979181, guid: 5b09b051f05e45d4dad55146d0635453,
         type: 3}
       propertyPath: m_Offset.x
-      value: 86.9562
+      value: 77.07078
       objectReference: {fileID: 0}
     - target: {fileID: 3807833284091979181, guid: 5b09b051f05e45d4dad55146d0635453,
         type: 3}
       propertyPath: m_Size.x
-      value: 232.07484
+      value: 251.84569
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b09b051f05e45d4dad55146d0635453, type: 3}

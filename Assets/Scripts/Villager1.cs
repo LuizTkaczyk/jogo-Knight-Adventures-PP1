@@ -31,7 +31,7 @@ public class Villager1 : MonoBehaviour
 
     public void Walk()
     {
-        transform.Translate(Vector2.left *3* Time.deltaTime);
+        transform.Translate(Vector2.left * 3.5f * Time.deltaTime);
         
         anim.SetTrigger("walk");
         Destroy(gameObject,10f);

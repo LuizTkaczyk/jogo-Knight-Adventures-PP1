@@ -143,6 +143,15 @@ public class Player : MonoBehaviour
         if (isAlive == true)
         {
 
+            //if (Input.GetKey(KeyCode.L)) 
+
+            //{
+            //    Controller.current.AddLife(1);
+
+            //}
+
+
+
             //controles Xbox
             if ((Input.GetAxisRaw("HorizontalJoystick") > 0) || Input.GetKey(KeyCode.D)) //vira/vai pra direita , com o teclado
 
@@ -179,7 +188,7 @@ public class Player : MonoBehaviour
             }
 
             // if (Input.GetKeyDown(KeyCode.Space))
-            if (Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
+            if (Input.GetButtonDown("JumpJoystick") && extraJumps > 0 || Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
 
             {
                 rig.velocity = Vector2.up * JumpForce;
@@ -187,7 +196,7 @@ public class Player : MonoBehaviour
                 Audios.current.PlayMusic(Audios.current.jumpSfx);
 
                 extraJumps--;
-            }else if(Input.GetButtonDown("JumpJoystick") || Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 &&isGrounded == true)
+            }else if(Input.GetButtonDown("JumpJoystick") && extraJumps > 0 && isGrounded == true || Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
             {
                 rig.velocity = Vector2.up * JumpForce;
                 anim.SetBool("isJump", true);
