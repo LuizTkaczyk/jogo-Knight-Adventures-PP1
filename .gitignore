@@ -9,6 +9,10 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/Assets/AsstesLevel1/
+/Assets/AssetsLevel2/
+/Assets/AssetsLevel3/
+/Assets/AssetsLevel4/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
